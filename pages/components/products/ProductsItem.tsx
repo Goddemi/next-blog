@@ -13,14 +13,13 @@ const ProductsItem = ({ product }: { product: ProductsType }) => {
     day: "numeric",
   });
 
-  const imagePath = `/images/products/${slug}/${image}`;
   const linkPath = `/products/${slug}`;
 
   return (
     <li>
       <Link href={linkPath}>
         <div>
-          <Image src={imagePath} alt={title} width={300} height={300} />
+          <Image src={image} alt={title} width={300} height={300} />
         </div>
         <div>
           <h3>{title}</h3>

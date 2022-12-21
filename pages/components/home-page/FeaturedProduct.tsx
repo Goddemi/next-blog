@@ -5,7 +5,7 @@ import { ProductsType } from "../../../type/products";
 
 const FeaturedProduct = ({ products }: { products: ProductsType[] }) => {
   return (
-    <div>
+    <div className="flex">
       <ProductsGrid products={products} />
     </div>
   );
