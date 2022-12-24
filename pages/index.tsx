@@ -7,17 +7,6 @@ import axios from "axios";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const DUMMY_PRODUCTS = [
-  {
-    slug: "space-shopping-rhea",
-    title: "RHEA",
-    image:
-      "https://res.cloudinary.com/dhfmls9fs/image/upload/v1671507955/space/rhea_kixj0w.jpg",
-    date: "1000-02-10",
-    description: "Saturn V",
-  },
-];
-
 export default function Home(props: any) {
   const productsData = props.productsData;
 

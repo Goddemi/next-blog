@@ -5,8 +5,8 @@ import { ProductsType } from "../../../type/products";
 
 const ProductsGrid = ({ products }: { products: ProductsType[] }) => {
   return (
-    <div className="flex">
-      <ul>
+    <div>
+      <ul className="flex justify-between">
         {products.map((product) => (
           <ProductsItem product={product} key={product.title} />
         ))}
