@@ -8,7 +8,7 @@ const ProductsGrid = ({ products }: { products: ProductsType[] }) => {
     <div>
       <ul className="flex justify-between">
         {products.map((product) => (
-          <ProductsItem product={product} key={product.title} />
+          <ProductsItem product={product} key={product?.title} />
         ))}
       </ul>
     </div>

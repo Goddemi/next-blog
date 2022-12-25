@@ -4,4 +4,5 @@ export interface ProductsType {
   image: string;
   date: string;
   description: string;
+  isFeatured: boolean;
 }
