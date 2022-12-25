@@ -1,6 +1,7 @@
 import React from "react";
 
-const ProductDetailPage = () => {
+const ProductDetailPage = (context: any) => {
+  console.log(context);
   return <div></div>;
 };
 

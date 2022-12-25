@@ -21,7 +21,7 @@ export default function Home(props: any) {
   return (
     <>
       <Hero />
-      <FeaturedProduct products={productsData} />
+      <FeaturedProduct products={data} />
       <div className="text-3xl font-bold underline">hi</div>
     </>
   );
