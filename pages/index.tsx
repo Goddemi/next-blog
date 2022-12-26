@@ -5,7 +5,7 @@ import Hero from "./components/home-page/Hero";
 import FeaturedProduct from "./components/home-page/FeaturedProduct";
 import axios from "axios";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { getProducts } from "../utils/getProducts";
+import { getProductsWithArray } from "../lib/getProducts";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,7 +14,7 @@ export default function Home(props: any) {
 
   const { data } = useQuery({
     queryKey: ["products"],
-    queryFn: getProducts,
+    queryFn: getProductsWithArray,
     initialData: productsData,
   });
 
@@ -22,7 +22,6 @@ export default function Home(props: any) {
     <>
       <Hero />
       <FeaturedProduct products={data} />
-      <div className="text-3xl font-bold underline">hi</div>
     </>
   );
 }
@@ -31,7 +30,7 @@ export const getStaticProps = async () => {
   let productsData;
 
   try {
-    productsData = await getProducts();
+    productsData = await getProductsWithArray();
   } catch (error) {
     console.log(error);
   }

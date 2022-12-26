@@ -1,4 +1,4 @@
-export interface ProductsType {
+export interface ProductType {
   slug: string;
   title: string;
   image: string;
@@ -6,3 +6,9 @@ export interface ProductsType {
   description: string;
   isFeatured: boolean;
 }
+
+export interface AllProductsType {
+  [key: string]: ProductType;
+}
+
+export type ProductsArrayType = ProductType[];

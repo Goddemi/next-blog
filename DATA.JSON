@@ -1,37 +1,74 @@
-[
-  {
-    "slug": "venus",
-    "title": "venus",
+{
+  "venus": {
+    "date": "1000-10-10",
+    "description": "hi",
     "image": "https://res.cloudinary.com/dhfmls9fs/image/upload/v1671507955/space/rhea_kixj0w.jpg",
-    "date": "1000-10-10",
-    "description": "hi"
+    "isFeatured": false,
+    "slug": "venus",
+    "title": "venus"
   },
-  {
-    "slug": "neptune",
-    "title": "neptune",
+  "neptune": {
+    "date": "1000-10-10",
+    "description": "hi",
     "image": "https://res.cloudinary.com/dhfmls9fs/image/upload/v1671507955/space/neptune_qalwx1.jpg",
-    "date": "1000-10-10",
-    "description": "hi"
+    "isFeatured": true,
+    "slug": "neptune",
+    "title": "neptune"
   },
-  {
+  "uranus": {
+    "date": "1000-10-10",
+    "description": "hi",
+    "image": "https://res.cloudinary.com/dhfmls9fs/image/upload/v1671507955/space/uranus_c5qqay.jpg",
+    "isFeatured": true,
     "slug": "uranus",
-    "title": "uranus",
-    "image": "https://res.cloudinary.com/dhfmls9fs/image/upload/v1671507955/space/uranus_c5qqay.jpg",
-    "date": "1000-10-10",
-    "description": "hi"
+    "title": "uranus"
   },
-  {
+  "mars": {
+    "date": "1000-10-10",
+    "description": "hi",
+    "image": "https://res.cloudinary.com/dhfmls9fs/image/upload/v1671507955/space/mars_agckbl.jpg",
+    "isFeatured": true,
     "slug": "mars",
-    "title": "mars",
-    "image": "https://res.cloudinary.com/dhfmls9fs/image/upload/v1671507955/space/uranus_c5qqay.jpg",
-    "date": "1000-10-10",
-    "description": "hi"
+    "title": "mars"
   },
-  {
-    "slug": "earth",
-    "title": "earth",
-    "image": "https://res.cloudinary.com/dhfmls9fs/image/upload/v1671507954/space/earth_vm6ouc.jpg",
+  "earth": {
     "date": "1000-10-10",
-    "description": "hi"
+    "description": "hi",
+    "image": "https://res.cloudinary.com/dhfmls9fs/image/upload/v1671507954/space/earth_vm6ouc.jpg",
+    "isFeatured": false,
+    "slug": "earth",
+    "title": "earth"
+  },
+  "mercury": {
+    "date": "1010-10-21",
+    "description": "why",
+    "image": "https://res.cloudinary.com/dhfmls9fs/image/upload/v1671507955/space/mercury_wgjagn.jpg",
+    "isFeatured": true,
+    "slug": "mercury",
+    "title": "mercury"
+  },
+  "pluto": {
+    "date": "1000-12-12",
+    "description": "good",
+    "image": "https://res.cloudinary.com/dhfmls9fs/image/upload/v1671507955/space/pluto_stvz3i.jpg",
+    "isFeatured": false,
+    "slug": "\"pluto\"",
+    "title": "pluto"
+  },
+  "jupiter": {
+    "date": "1221-10-21",
+    "description": "yes",
+    "image": "https://res.cloudinary.com/dhfmls9fs/image/upload/v1671507954/space/jupiter_disihh.jpg",
+    "isFeatured": true,
+    "slug": "jupiter",
+    "title": "jupiter"
+  },
+  "moon": {
+    "date": "1212-12-12",
+    "description": "okay",
+    "image": "https://res.cloudinary.com/dhfmls9fs/image/upload/v1671507954/space/moon_ce9psv.jpg",
+    "isFeatured": false,
+    "slug": "moon",
+    "title": "moon"
   }
-]
+}
