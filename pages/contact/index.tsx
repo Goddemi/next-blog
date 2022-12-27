@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useRef } from "react";
+import { postContent } from "../../lib/postContent";
 
 const Contact = () => {
   const emailRef = useRef<HTMLInputElement>(null);
@@ -16,10 +17,7 @@ const Contact = () => {
       content: contentValue,
     };
 
-    axios
-      .post("/api/contact", reqBody)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    postContent("/api/contact", reqBody);
   };
 
   return (
