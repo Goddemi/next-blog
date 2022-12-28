@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { getProductsWithArray } from "../../lib/getProducts";
-import ProductsGrid from "../components/products/ProductsGrid";
+import ProductsGrid from "../../components/products/ProductsGrid";
 
 const AllProductsPage = (props: any) => {
   const productsData = props.productsData;

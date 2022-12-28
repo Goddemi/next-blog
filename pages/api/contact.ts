@@ -12,6 +12,11 @@ export default async function handler(
     const email = req.body.email;
     const content = req.body.content;
 
+    if (!email || !email.includes("@") || !content || content.trim() === "") {
+      res.status(422).json({ message: "Invalid Input" });
+      return;
+    }
+
     const data = {
       id: new Date(),
       email,

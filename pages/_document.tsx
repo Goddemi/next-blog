@@ -1,5 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import Nav from "./components/nav/Nav";
+import Nav from "../components/nav/Nav";
 
 export default function Document() {
   return (
@@ -9,6 +9,7 @@ export default function Document() {
         <Nav />
         <Main />
         <NextScript />
+        <div id="notification"></div>
       </body>
     </Html>
   );

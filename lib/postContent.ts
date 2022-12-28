@@ -1,8 +1,14 @@
 import axios from "axios";
 
 export const postContent = async (url: string, data: object) => {
-  axios
-    .post(url, data)
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
+  try {
+    const res = await axios.post(url, data, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return res;
+  } catch (error) {
+    throw new Error();
+  }
 };

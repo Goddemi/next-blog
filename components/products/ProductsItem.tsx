@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-import { ProductType } from "../../../type/products";
+import { ProductType } from "../../type/products";
 
 const ProductsItem = ({ product }: { product: ProductType }) => {
   const { slug, title, image, date, description } = product;

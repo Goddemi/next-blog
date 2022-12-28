@@ -1,7 +1,7 @@
 import React from "react";
 import ProductsGrid from "../products/ProductsGrid";
 
-import { ProductsArrayType } from "../../../type/products";
+import { ProductsArrayType } from "../../type/products";
 
 const FeaturedProduct = ({ products }: { products: ProductsArrayType }) => {
   const FeaturedProducts = products.filter((product) => product.isFeatured);

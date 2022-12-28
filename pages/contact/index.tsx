@@ -1,52 +1,18 @@
-import axios from "axios";
-import React, { useRef } from "react";
-import { postContent } from "../../lib/postContent";
+import Head from "next/head";
+import React, { useContext, useRef } from "react";
+import ContactForm from "../../components/contact/Contact";
 
-const Contact = () => {
-  const emailRef = useRef<HTMLInputElement>(null);
-  const contentRef = useRef<HTMLTextAreaElement>(null);
-
-  const contactHandler = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const emailValue = emailRef.current?.value;
-    const contentValue = contentRef.current?.value;
-
-    const reqBody = {
-      email: emailValue,
-      content: contentValue,
-    };
-
-    postContent("/api/contact", reqBody);
-  };
-
+const ContactPage = () => {
   return (
-    <form onSubmit={contactHandler}>
-      <div>
-        <label htmlFor="email" className="border-2 border-black">
-          이메일 :{" "}
-        </label>
-        <input
-          id="email"
-          type="email"
-          ref={emailRef}
-          className="border-2 border-black bg-gray-200 "
-        />
-      </div>
-      <div>
-        <label htmlFor="content" className="border-2 border-black">
-          내용 :
-        </label>
-        <textarea
-          id="content"
-          rows={5}
-          ref={contentRef}
-          className=" bg-gray-200 border-2 border-black"
-        ></textarea>
-      </div>
-      <button className="border-2 border-black">Submit</button>
-    </form>
+    <>
+      <Head>
+        <title>contact</title>
+        <meta name="description" content="form for contact"></meta>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <ContactForm />
+    </>
   );
 };
 
-export default Contact;
+export default ContactPage;
