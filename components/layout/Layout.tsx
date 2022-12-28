@@ -4,7 +4,7 @@ import Notification from "../notification/Notification";
 
 const Layout = (props: any) => {
   const notificationCtx = useContext(NotificationContext);
-  const activeNotification = notificationCtx.notification;
+  const activeNotification: any = notificationCtx.notification;
 
   return (
     <>

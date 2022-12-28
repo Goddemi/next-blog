@@ -19,7 +19,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "components/layout/Layout.jsx"
+    "components/layout/Layout.jsx",
+    "pages/contact/index.jsx"
   ],
   "exclude": ["node_modules"]
 }
