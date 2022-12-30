@@ -1,3 +1,4 @@
+import { firebaseId, firebaseTitle } from "./../../config/firebase";
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -24,7 +25,7 @@ export default async function handler(
     };
 
     postContent(
-      "https://youneedverse-e9492-default-rtdb.asia-southeast1.firebasedatabase.app/contact.json",
+      `https://${firebaseTitle}-${firebaseId}-default-rtdb.asia-southeast1.firebasedatabase.app/contact.json`,
       data
     );
 
