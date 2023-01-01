@@ -20,13 +20,15 @@ export default async function handler(
       content,
     };
 
-    postContent(
-      `https://youneedverse-e9492-default-rtdb.asia-southeast1.firebasedatabase.app/contact.json`,
-      data
-    )
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error));
-
-    res.status(201).json({ message: "api route : good", email: data });
+    try {
+      const response = await postContent(
+        `https://youneedverse-e9492-default-rtdb.asia-southeast1.firebasedatabase.app/contact.json`,
+        data
+      );
+      console.log(response);
+      res.status(201).json({ message: "api route : good", email: data });
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
