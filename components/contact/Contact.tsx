@@ -44,30 +44,34 @@ const ContactForm = () => {
   };
 
   return (
-    <form onSubmit={contactHandler}>
-      <div>
-        <label htmlFor="email" className="border-2 border-black">
-          이메일 :{" "}
-        </label>
-        <input
-          id="email"
-          type="email"
-          ref={emailRef}
-          className="border-2 border-black bg-gray-200 "
-        />
+    <form onSubmit={contactHandler} className="w-2/3 p-20 border-2 border-gray">
+      <div className="flex justify-center items-center ">
+        <div className="p-10">
+          <label htmlFor="email" className="text-2xl p-5">
+            이메일{" "}
+          </label>
+          <input
+            id="email"
+            type="email"
+            ref={emailRef}
+            className=" bg-gray-200 "
+          />
+        </div>
+        <div className="p-10 pl-14 flex justify-center items-center">
+          <label htmlFor="content" className="text-2xl p-5">
+            <span>내용 </span>
+          </label>
+          <textarea
+            id="content"
+            rows={5}
+            ref={contentRef}
+            className=" bg-gray-200 "
+          ></textarea>
+        </div>
       </div>
-      <div>
-        <label htmlFor="content" className="border-2 border-black">
-          내용 :
-        </label>
-        <textarea
-          id="content"
-          rows={5}
-          ref={contentRef}
-          className=" bg-gray-200 border-2 border-black"
-        ></textarea>
+      <div className="text-center ">
+        <button className="p-5 bg-slate-100">Submit</button>
       </div>
-      <button className="border-2 border-black">Submit</button>
     </form>
   );
 };

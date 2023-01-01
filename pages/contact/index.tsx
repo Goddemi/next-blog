@@ -10,7 +10,10 @@ const ContactPage = () => {
         <meta name="description" content="form for contact"></meta>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <ContactForm />
+      <div className="h-full flex justify-center items-center">
+        {" "}
+        <ContactForm />
+      </div>
     </>
   );
 };

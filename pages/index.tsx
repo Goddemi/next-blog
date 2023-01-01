@@ -7,8 +7,6 @@ import axios from "axios";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getProductsWithArray } from "../lib/getProducts";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export default function Home(props: any) {
   const productsData = props.productsData;
 
