@@ -1,5 +1,4 @@
 import Head from "next/head";
-import React, { useContext, useRef } from "react";
 import ContactForm from "../../components/contact/Contact";
 
 const ContactPage = () => {

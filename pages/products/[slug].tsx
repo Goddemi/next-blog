@@ -1,8 +1,5 @@
 import Image from "next/image";
-
 import React from "react";
-import { Params } from "react-router-dom";
-import { Context } from "vm";
 import { getProducts } from "../../lib/getProducts";
 
 const ProductDetailPage = (props: any) => {

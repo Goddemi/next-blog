@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useContext, useRef } from "react";
 import { postContent } from "../../lib/postContent";
 import { NotificationContext } from "../../store/notification-context";

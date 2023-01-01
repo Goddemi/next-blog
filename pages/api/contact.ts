@@ -1,4 +1,3 @@
-import { firebaseId, firebaseTitle } from "./../../config/firebase";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { postContent } from "../../lib/postContent";
 
