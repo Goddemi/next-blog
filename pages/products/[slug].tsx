@@ -25,8 +25,6 @@ export const getStaticProps = async (context: any) => {
 
   const detailProduct = await getProducts(slug);
 
-  console.log(detailProduct);
-
   return { props: detailProduct, revalidate: 600 };
 };
 

@@ -7,6 +7,7 @@ export const postContent = async (url: string, data: object) => {
         "Content-Type": "application/json",
       },
     });
+    console.log(res.data);
     return res;
   } catch (error) {
     throw new Error();

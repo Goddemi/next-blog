@@ -23,7 +23,7 @@ export default async function handler(
     postContent(
       `https://youneedverse-e9492-default-rtdb.asia-southeast1.firebasedatabase.app/contact.json`,
       data
-    ).then((res) => console.log("database : " + res));
+    );
 
     res.status(201).json({ message: "api route : good", email: data });
   }
