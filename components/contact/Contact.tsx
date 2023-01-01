@@ -26,6 +26,7 @@ const ContactForm = () => {
     };
 
     postContent("/api/contact", reqBody)
+      .then((res) => console.log(res))
       .then(() =>
         notificationCtx.showNotification({
           title: "success",
@@ -33,6 +34,7 @@ const ContactForm = () => {
           status: "success",
         })
       )
+
       .catch((error) =>
         notificationCtx.showNotification({
           title: "Error!",
