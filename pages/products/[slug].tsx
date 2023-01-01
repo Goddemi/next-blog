@@ -28,12 +28,14 @@ export const getStaticProps = async (context: any) => {
 
   const detailProduct = await getProducts(slug);
 
+  console.log(detailProduct);
+
   return { props: detailProduct, revalidate: 600 };
 };
 
-export const getStaticPaths = () => {
+export const getStaticPaths = async () => {
   return {
-    paths: [{ params: { slug: "uranus" } }],
+    paths: [{ params: { slug: "mercury" } }],
     fallback: "blocking",
   };
 };
