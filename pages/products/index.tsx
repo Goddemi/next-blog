@@ -2,10 +2,14 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { getProductsWithArray } from "../../lib/getProducts";
 import ProductsGrid from "../../components/products/ProductsGrid";
+import { GetStaticProps } from "next";
+import { ProductsArrayType } from "../../type/products";
 
-const AllProductsPage = (props: any) => {
-  const productsData = props.productsData;
-
+const AllProductsPage = ({
+  productsData,
+}: {
+  productsData: ProductsArrayType;
+}) => {
   const { data } = useQuery({
     queryKey: ["products"],
     queryFn: getProductsWithArray,
@@ -22,7 +26,7 @@ const AllProductsPage = (props: any) => {
 
 export default AllProductsPage;
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   let productsData;
 
   try {

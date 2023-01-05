@@ -1,8 +1,9 @@
 import Image from "next/image";
 import React from "react";
 import { getProducts } from "../../lib/getProducts";
-
-const ProductDetailPage = (props: any) => {
+import { GetStaticProps, GetStaticPaths } from "next";
+import { ProductType } from "../../type/products";
+const ProductDetailPage = (props: ProductType) => {
   const { date, description, image, isFeatured, slug, title } = props;
 
   return (
@@ -19,7 +20,7 @@ const ProductDetailPage = (props: any) => {
 
 export default ProductDetailPage;
 
-export const getStaticProps = async (context: any) => {
+export const getStaticProps: GetStaticProps = async (context: any) => {
   const { params } = context;
   const { slug } = params;
 
@@ -28,7 +29,7 @@ export const getStaticProps = async (context: any) => {
   return { props: detailProduct, revalidate: 600 };
 };
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [{ params: { slug: "mercury" } }],
     fallback: "blocking",

@@ -3,10 +3,14 @@ import Hero from "../components/home-page/Hero";
 import FeaturedProduct from "../components/home-page/FeaturedProduct";
 import { useQuery } from "@tanstack/react-query";
 import { getProductsWithArray } from "../lib/getProducts";
+import { GetStaticProps } from "next";
+import { ProductsArrayType } from "../type/products";
 
-export default function Home(props: any) {
-  const productsData = props.productsData;
-
+export default function Home({
+  productsData,
+}: {
+  productsData: ProductsArrayType;
+}) {
   const { data } = useQuery({
     queryKey: ["products"],
     queryFn: getProductsWithArray,
@@ -26,7 +30,7 @@ export default function Home(props: any) {
   );
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   let productsData;
 
   try {
