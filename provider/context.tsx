@@ -7,7 +7,7 @@ import { NotificationContext } from "../store/notification-context";
 //   hideNotification: any;
 // }
 
-export const NotificationContextProvider = (props: any) => {
+export const NotificationContextProvider = (props: React.PropsWithChildren) => {
   const [activeNotification, setActiveNotification] = useState(null);
 
   const showNotificationHandler = (notificationData: any) => {

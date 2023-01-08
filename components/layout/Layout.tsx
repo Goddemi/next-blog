@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { NotificationContext } from "../../store/notification-context";
 import Notification from "../notification/Notification";
 
-const Layout = (props: any) => {
+const Layout = (props: React.PropsWithChildren) => {
   const notificationCtx = useContext(NotificationContext);
   const activeNotification: any = notificationCtx.notification;
 

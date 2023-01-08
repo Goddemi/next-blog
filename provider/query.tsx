@@ -3,7 +3,7 @@ import React from "react";
 
 const queryClient = new QueryClient();
 
-const QueryProvider = ({ children }: any) => {
+const QueryProvider = ({ children }: React.PropsWithChildren) => {
   return (
     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   );
