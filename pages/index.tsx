@@ -21,7 +21,10 @@ export default function Home({
     <>
       <Head>
         <title>planet shop</title>
-        <meta name="description" content="next.js practice project" />
+        <meta
+          name="description"
+          content="next.js practice project. planet shopping mall site"
+        />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Hero />

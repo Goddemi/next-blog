@@ -4,6 +4,7 @@ import { getProductsWithArray } from "../../lib/getProducts";
 import ProductsGrid from "../../components/products/ProductsGrid";
 import { GetStaticProps } from "next";
 import { ProductsArrayType } from "../../type/products";
+import Head from "next/head";
 
 const AllProductsPage = ({
   productsData,
@@ -18,6 +19,14 @@ const AllProductsPage = ({
 
   return (
     <>
+      <Head>
+        <title>Products</title>
+        <meta
+          name="description"
+          content="all planet products with next js practice"
+        ></meta>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <div className="text-6xl text-center">All products</div>
       <ProductsGrid products={data} />
     </>
