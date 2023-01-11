@@ -55,7 +55,7 @@ const ContactForm = () => {
             id="email"
             type="email"
             ref={emailRef}
-            className=" bg-gray-200 "
+            className=" bg-gray-800 "
           />
         </div>
         <div className="p-10 pl-14 flex justify-center items-center">
@@ -66,12 +66,12 @@ const ContactForm = () => {
             id="content"
             rows={5}
             ref={contentRef}
-            className=" bg-gray-200 "
+            className=" bg-gray-800 "
           ></textarea>
         </div>
       </div>
       <div className="text-center ">
-        <button className="p-5 bg-slate-100">Submit</button>
+        <button className="p-5">Submit</button>
       </div>
     </form>
   );
