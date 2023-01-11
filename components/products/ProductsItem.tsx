@@ -16,7 +16,7 @@ const ProductsItem = ({ product }: { product: ProductType }) => {
   const linkPath = `/products/${slug}`;
 
   return (
-    <li className="mx-4">
+    <li className="mx-4 my-10">
       <Link href={linkPath}>
         <div>
           <Image src={image} alt={title} width={300} height={300} />
@@ -24,7 +24,6 @@ const ProductsItem = ({ product }: { product: ProductType }) => {
         <div>
           <h3>{title}</h3>
           <time>{formattedDate}</time>
-          <p>{description}</p>
         </div>
       </Link>
     </li>

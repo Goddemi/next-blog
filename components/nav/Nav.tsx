@@ -5,7 +5,7 @@ const Nav = () => {
   return (
     <div className="flex justify-between p-8 text-lg">
       <div className="cursor-pointer">
-        <Link href={"/"}>mall name</Link>
+        <Link href={"/"}>Planet shop</Link>
       </div>
       <ul className="flex">
         <li className="px-10 cursor-pointer">

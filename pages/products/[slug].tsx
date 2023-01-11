@@ -8,7 +8,7 @@ const ProductDetailPage = (props: ProductType) => {
   const { date, description, image, isFeatured, slug, title } = props;
 
   return (
-    <div className="flex justify-center mt-5">
+    <div className="flex justify-center items-center mt-5">
       <Head>
         <title>{title}</title>
         <meta
@@ -18,10 +18,10 @@ const ProductDetailPage = (props: ProductType) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Image src={image} width={300} height={300} alt={slug} />
-      <div className="mx-3">
+      <div className="mx-20 mt-20 max-w-md">
         <div>{title}</div>
-        <div>{description}</div>
         <div>{date}</div>
+        <div className="mt-5">{description}</div>
       </div>
     </div>
   );
