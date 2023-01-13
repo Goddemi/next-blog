@@ -5,30 +5,30 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  if (req.method === "POST") {
-    const email = req.body.email;
-    const content = req.body.content;
+  if (req.method !== "POST") return;
 
-    if (!email || !email.includes("@") || !content || content.trim() === "") {
-      res.status(422).json({ message: "Invalid Input" });
-      return;
-    }
+  const email = req.body.email;
+  const content = req.body.content;
 
-    const data = {
-      id: new Date(),
-      email,
-      content,
-    };
+  if (!email || !email.includes("@") || !content || content.trim() === "") {
+    res.status(422).json({ message: "Invalid Input" });
+    return;
+  }
 
-    try {
-      const response = await postContent(
-        `https://youneedverse-e9492-default-rtdb.asia-southeast1.firebasedatabase.app/contact.json`,
-        data
-      );
-      console.log(response);
-      res.status(201).json({ message: "api route : good", email: data });
-    } catch (error) {
-      console.log(error);
-    }
+  const data = {
+    id: new Date(),
+    email,
+    content,
+  };
+
+  try {
+    const response = await postContent(
+      `https://youneedverse-e9492-default-rtdb.asia-southeast1.firebasedatabase.app/contact.json`,
+      data
+    );
+    console.log(response);
+    res.status(201).json({ message: "api route : good", email: data });
+  } catch (error) {
+    console.log(error);
   }
 }
