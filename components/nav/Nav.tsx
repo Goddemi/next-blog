@@ -1,7 +1,12 @@
 import Link from "next/link";
 import React from "react";
 
+import { useDispatch } from "react-redux";
+import { authModalOn } from "../../store/auth-slice";
+
 const Nav = () => {
+  const dispatch = useDispatch();
+
   return (
     <div className="flex justify-between p-8 text-lg">
       <div className="cursor-pointer">
@@ -15,7 +20,7 @@ const Nav = () => {
           <Link href={"/contact"}>contact</Link>
         </li>
         <li className="px-10 cursor-pointer">
-          <Link href={"/login"}>login</Link>
+          <span onClick={() => dispatch(authModalOn())}>login</span>
         </li>
       </ul>
     </div>

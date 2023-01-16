@@ -6,12 +6,12 @@ import Head from "next/head";
 
 import type { RootState } from "../../store/store";
 import { useDispatch, useSelector } from "react-redux";
-import { change } from "../../store/login-slice";
+import { authModalOn } from "../../store/auth-slice";
 
 const ProductDetailPage = (props: ProductType) => {
   const { date, description, image, slug, title } = props;
 
-  const loginState = useSelector((state: RootState) => state.login.active);
+  const authState = useSelector((state: RootState) => state.auth.active);
   const dispatch = useDispatch();
 
   return (
@@ -32,7 +32,7 @@ const ProductDetailPage = (props: ProductType) => {
         <div className="mt-5">{description}</div>
         <button
           className="absolute right-5 py-4 px-5 rounded bg-orange-600"
-          onClick={() => dispatch(change())}
+          onClick={() => dispatch(authModalOn())}
         >
           장바구니
         </button>

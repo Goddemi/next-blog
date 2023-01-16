@@ -4,12 +4,12 @@ import Head from "next/head";
 import QueryProvider from "../provider/query";
 import { NotificationContextProvider } from "../provider/context";
 import Layout from "../components/layout/Layout";
-import LoginProvider from "../provider/login";
+import AuthProvider from "../provider/auth";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     //프로바이더 합치기, context랑 -> redux로 변경해서
-    <LoginProvider>
+    <AuthProvider>
       <NotificationContextProvider>
         <QueryProvider>
           <Layout>
@@ -24,6 +24,6 @@ export default function App({ Component, pageProps }: AppProps) {
           </Layout>
         </QueryProvider>
       </NotificationContextProvider>
-    </LoginProvider>
+    </AuthProvider>
   );
 }
