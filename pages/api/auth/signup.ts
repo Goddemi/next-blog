@@ -1,9 +1,3 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from "next";
 
-
-export const handler = (req : NextApiRequest, res : NextApiResponse) => {
-
-
-    if ()
-
-};
+export const handler = (req: NextApiRequest, res: NextApiResponse) => {};

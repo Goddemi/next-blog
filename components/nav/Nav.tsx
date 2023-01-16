@@ -14,6 +14,9 @@ const Nav = () => {
         <li className="px-10 cursor-pointer">
           <Link href={"/contact"}>contact</Link>
         </li>
+        <li className="px-10 cursor-pointer">
+          <Link href={"/login"}>login</Link>
+        </li>
       </ul>
     </div>
   );

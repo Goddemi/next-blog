@@ -4,21 +4,26 @@ import Head from "next/head";
 import QueryProvider from "../provider/query";
 import { NotificationContextProvider } from "../provider/context";
 import Layout from "../components/layout/Layout";
+import LoginProvider from "../provider/login";
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <NotificationContextProvider>
-      <QueryProvider>
-        <Layout>
-          <Head>
-            <meta name="description" content="NextJS practice" />
-            <meta
-              name="viewport"
-              content="initial-scale=1.0, width=device-width"
-            />
-          </Head>
-          <Component {...pageProps} />
-        </Layout>
-      </QueryProvider>
-    </NotificationContextProvider>
+    //프로바이더 합치기, context랑 -> redux로 변경해서
+    <LoginProvider>
+      <NotificationContextProvider>
+        <QueryProvider>
+          <Layout>
+            <Head>
+              <meta name="description" content="NextJS practice" />
+              <meta
+                name="viewport"
+                content="initial-scale=1.0, width=device-width"
+              />
+            </Head>
+            <Component {...pageProps} />
+          </Layout>
+        </QueryProvider>
+      </NotificationContextProvider>
+    </LoginProvider>
   );
 }
