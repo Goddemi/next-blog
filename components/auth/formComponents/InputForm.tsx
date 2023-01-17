@@ -1,25 +1,29 @@
-import React from "react";
+import React, { forwardRef, ReactNode } from "react";
 
 interface Props {
   label: string;
   id: "email" | "password";
 }
 
-const InputForm = ({ label, id }: any) => {
-  return (
-    <div className="mb-6 flex justify-end">
-      <label htmlFor={id} className="mr-3">
-        <span>{label}</span>
-      </label>
-      <div>
-        <input
-          id={id}
-          type={id}
-          className="border-b border-indigo-300 outline-0"
-        />
+const InputForm = forwardRef(
+  (props: Props, ref: React.Ref<HTMLInputElement | any>) => {
+    return (
+      <div className="mb-6 flex justify-end">
+        <label htmlFor={props.id} className="mr-3">
+          <span>{props.label}</span>
+        </label>
+        <div>
+          <input
+            name={props.id}
+            type={props.id}
+            ref={ref}
+            className="border-b border-indigo-300 outline-0"
+          />
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+);
 
+InputForm.displayName = "InputForm";
 export default InputForm;
