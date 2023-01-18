@@ -1,5 +1,5 @@
 import React, { useContext, useRef } from "react";
-import { postContent } from "../../lib/postContent";
+import { postContent } from "../../lib/products/postContent";
 import { NotificationContext } from "../../store/notification-context";
 
 const ContactForm = () => {

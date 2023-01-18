@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
-import { signupEmail } from "../../lib/auth";
-import Exit from "./formComponents/Exit";
+import { signupEmail } from "../../lib/auth/auth";
+import { signupErrorHandler } from "../../lib/auth/error";
+import AuthResult from "./formComponents/authResult";
+import ExitButton from "./formComponents/Exit";
 import InputForm from "./formComponents/inputForm";
 
 //어떻게 찢어서 분리할지 생각해보자.
@@ -12,13 +14,30 @@ const SignupForm = () => {
   const passwordRef = useRef<HTMLInputElement>(null);
   const passwordCheckRef = useRef<HTMLInputElement>(null);
 
-  const [signupState, setSignupState] = useState({
+  const [signupResult, setSignupResult] = useState({
     signupSuccess: false,
     signupFail: false,
   });
-  const { signupSuccess, signupFail } = signupState;
+  const { signupSuccess, signupFail } = signupResult;
 
-  const [errorMessage, setErrorMessage] = useState();
+  const [errorMessage, setErrorMessage] = useState<string | null>();
+
+  const signupHandler = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+
+    const result = await signupEmail(emailRef, passwordRef, passwordCheckRef);
+
+    if (result == "회원가입 성공") {
+      setSignupResult({ signupFail: false, signupSuccess: true });
+      inputClear();
+    } else {
+      const errorResult = signupErrorHandler(result);
+      setSignupResult({ signupSuccess: false, signupFail: true });
+      setErrorMessage(errorResult);
+    }
+  };
 
   const inputClear = () => {
     if (emailRef.current && passwordRef.current && passwordCheckRef.current) {
@@ -28,24 +47,9 @@ const SignupForm = () => {
     }
   };
 
-  const signupHandler = async (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    e.preventDefault();
-
-    const result = await signupEmail(emailRef, passwordRef);
-
-    if (result == "회원가입 성공") {
-      setSignupState({ signupFail: false, signupSuccess: true });
-      inputClear();
-    } else {
-      setSignupState({ signupSuccess: false, signupFail: true });
-    }
-  };
-
   return (
     <form className="p-5 relative">
-      <Exit />
+      <ExitButton />
       <InputForm label={"아이디(이메일)"} id={"email"} ref={emailRef} />
       <InputForm label={"비밀번호"} id={"password"} ref={passwordRef} />
       <InputForm
@@ -57,19 +61,17 @@ const SignupForm = () => {
       <div className="flex justify-center">
         <button
           type="button"
-          className="bg-blue-400 md-2 py-1 px-3 rounded-md"
-          onClick={(e) => {
-            signupHandler(e);
-          }}
+          className="bg-blue-400 mb-2 py-1 px-3 rounded-md"
+          onClick={signupHandler}
         >
           회원가입
         </button>
       </div>
-      {signupSuccess && (
-        <p className="text-center text-green-400">회원가입 성공 !</p>
-      )}
-      {signupFail && <p className="text-center text-red-400">회원가입 실패</p>}
-      {errorMessage}
+      <AuthResult
+        success={signupSuccess}
+        fail={signupFail}
+        message={errorMessage}
+      />
     </form>
   );
 };

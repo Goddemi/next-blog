@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { postContent } from "../../lib/postContent";
+import { postContent } from "../../lib/products/postContent";
 
 export default async function handler(
   req: NextApiRequest,

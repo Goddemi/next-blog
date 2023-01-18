@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { getProductsWithArray } from "../../lib/getProducts";
+import { getProductsWithArray } from "../../lib/products/getProducts";
 import ProductsGrid from "../../components/products/ProductsGrid";
 import { GetStaticProps } from "next";
 import { ProductsArrayType } from "../../type/products";

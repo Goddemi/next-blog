@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { authModalOff } from "../../../store/auth-slice";
 
-const Exit = () => {
+const ExitButton = () => {
   const dispatch = useDispatch();
   return (
     <span
@@ -14,4 +14,4 @@ const Exit = () => {
   );
 };
 
-export default Exit;
+export default ExitButton;

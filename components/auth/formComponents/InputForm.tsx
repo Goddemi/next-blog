@@ -17,6 +17,7 @@ const InputForm = forwardRef(
             name={props.id}
             type={props.id}
             ref={ref}
+            autoComplete="new-password"
             className="border-b border-indigo-300 outline-0"
           />
         </div>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { getProducts } from "../../lib/getProducts";
+import { getProducts } from "../../lib/products/getProducts";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { ProductType } from "../../type/products";
 import Head from "next/head";

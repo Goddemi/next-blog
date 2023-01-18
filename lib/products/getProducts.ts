@@ -1,4 +1,4 @@
-import { ProductsArrayType } from "./../type/products";
+import { ProductsArrayType } from "../../type/products";
 import axios from "axios";
 
 export const getProducts = async (name = "") => {
