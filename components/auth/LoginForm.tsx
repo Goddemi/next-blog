@@ -55,8 +55,8 @@ const LoginForm = ({
     <>
       <form className="relative p-5">
         <Exit />
-        <InputForm label={"아이디(이메일)"} id={"email"} />
-        <InputForm label={"비밀번호"} id={"password"} />
+        <InputForm label={"아이디(이메일)"} id={"email"} ref={emailRef} />
+        <InputForm label={"비밀번호"} id={"password"} ref={passwordRef} />
 
         <div className="flex justify-between">
           <button
