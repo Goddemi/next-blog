@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { signupEmail } from "../../lib/auth/auth";
+import { signupRequest } from "../../lib/auth/auth";
 import { signupErrorHandler } from "../../lib/auth/error";
 import AuthResult from "./formComponents/authResult";
 import ExitButton from "./formComponents/Exit";
@@ -27,7 +27,7 @@ const SignupForm = () => {
   ) => {
     e.preventDefault();
 
-    const result = await signupEmail(emailRef, passwordRef, passwordCheckRef);
+    const result = await signupRequest(emailRef, passwordRef, passwordCheckRef);
 
     if (result == "회원가입 성공") {
       setSignupResult({ signupFail: false, signupSuccess: true });

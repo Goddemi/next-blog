@@ -17,3 +17,11 @@ export const signupErrorHandler = (result: string) => {
 
   return result;
 };
+
+export const loginErrorHandler = (result: string) => {
+  if (result === "auth/missing-email") {
+    return "잘못된 이메일 형식";
+  }
+
+  return result;
+};

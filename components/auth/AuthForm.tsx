@@ -6,11 +6,11 @@ const AuthForm = () => {
   const [loginSignup, setLoginSignup] = useState(true);
   return (
     <div className="p-5 z-10 bg-white text-black">
-      {/* {loginSignup ? (
+      {loginSignup ? (
         <LoginForm setLoginSignup={setLoginSignup} />
-      ) : ( */}
-      <SignupForm />
-      {/* )} */}
+      ) : (
+        <SignupForm />
+      )}
     </div>
   );
 };
