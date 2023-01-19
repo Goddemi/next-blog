@@ -8,18 +8,10 @@ import { authModalOff } from "../../store/auth/authModal";
 import { loggedIn } from "../../store/auth/loginOut";
 
 import AuthResult from "./formComponents/authResult";
-import Exit from "./formComponents/Exit";
+import Exit from "./formComponents/ExitButton";
 import InputForm from "./formComponents/inputForm";
 
-const LoginForm = ({
-  setLoginSignupChange,
-}: {
-  setLoginSignupChange: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
-  const loginToSignupChange = () => {
-    setLoginSignupChange(false);
-  };
-
+const LoginForm = ({ goToSignup, goToFindPassword }: any) => {
   const dispatch = useDispatch();
 
   const emailRef = useRef<HTMLInputElement>(null);
@@ -55,8 +47,7 @@ const LoginForm = ({
 
   return (
     <>
-      <form className="relative p-5">
-        <Exit />
+      <form>
         <InputForm label={"아이디(이메일)"} id={"email"} ref={emailRef} />
         <InputForm label={"비밀번호"} id={"password"} ref={passwordRef} />
 
@@ -69,9 +60,16 @@ const LoginForm = ({
             로그인
           </button>
           <button
-            onClick={loginToSignupChange}
+            type="button"
+            className="bg-gray-400 py-1 px-3 rounded-md"
+            onClick={goToFindPassword}
+          >
+            비밀번호 찾기
+          </button>
+          <button
             type="button"
             className="bg-blue-400 py-1 px-3 rounded-md"
+            onClick={goToSignup}
           >
             회원가입
           </button>

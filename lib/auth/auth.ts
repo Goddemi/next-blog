@@ -6,11 +6,11 @@ import {
   signInWithEmailAndPassword,
   setPersistence,
   browserSessionPersistence,
+  signOut,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 
 const auth = getAuth(app);
-
-const loginFn = () => {};
 
 export const loginRequest = async (email: any, password: any) => {
   try {
@@ -25,14 +25,10 @@ export const loginRequest = async (email: any, password: any) => {
 };
 
 export const signupRequest = async (
-  emailRef: any,
-  passwordRef: any,
-  passwordCheckRef: any
+  email: any,
+  password: any,
+  passwordCheck: any
 ) => {
-  const email = await emailRef.current?.value;
-  const password = await passwordRef.current?.value;
-  const passwordCheck = await passwordCheckRef.current?.value;
-
   if (password !== passwordCheck) {
     return "password check error";
   }
@@ -44,10 +40,30 @@ export const signupRequest = async (
       email,
       password
     );
-    const { uid } = user;
+    // const { uid } = user;
     return "회원가입 성공";
   } catch (error: any) {
     const errorCode = await error.code;
     return errorCode;
+  }
+};
+
+export const logoutRequest = async () => {
+  try {
+    await signOut(auth);
+  } catch (error) {
+    alert("로그아웃 실패");
+  }
+};
+
+export const passwordChange = async () => {
+  const user = auth.currentUser;
+
+  try {
+    if (user && user.email) {
+      sendPasswordResetEmail(auth, user.email);
+    }
+  } catch (error) {
+    alert("로그인이 필요합니다 !");
   }
 };

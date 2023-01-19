@@ -2,18 +2,14 @@ import React, { useRef, useState } from "react";
 import { signupRequest } from "../../lib/auth/auth";
 import { signupErrorHandler } from "../../lib/auth/error";
 import AuthResult from "./formComponents/authResult";
-import ExitButton from "./formComponents/Exit";
+import ExitButton from "./formComponents/ExitButton";
 import InputForm from "./formComponents/inputForm";
 
 //어떻게 찢어서 분리할지 생각해보자.
 
 //파이어베이스에서 회원가입시 어떤 결과값들이 나올 수 있는지 확인하고 그에 따른 결과문
 
-const SignupForm = ({
-  setLoginSignupChange,
-}: {
-  setLoginSignupChange: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
+const SignupForm = ({ goToLogin }: any) => {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const passwordCheckRef = useRef<HTMLInputElement>(null);
@@ -26,20 +22,20 @@ const SignupForm = ({
 
   const [errorMessage, setErrorMessage] = useState<string | null>();
 
-  const signupToLoginChange = () => {
-    setLoginSignupChange(true);
-  };
-
   const signupHandler = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
 
-    const result = await signupRequest(emailRef, passwordRef, passwordCheckRef);
+    const email = emailRef.current?.value;
+    const password = passwordRef.current?.value;
+    const passwordCheck = passwordCheckRef.current?.value;
+
+    const result = await signupRequest(email, password, passwordCheck);
 
     if (result == "회원가입 성공") {
       setSignupResult({ signupFail: false, signupSuccess: true });
-      signupToLoginChange();
+      goToLogin();
     } else {
       const errorMessage = signupErrorHandler(result);
       setSignupResult({ signupSuccess: false, signupFail: true });
@@ -49,7 +45,6 @@ const SignupForm = ({
 
   return (
     <form className="p-5 relative">
-      <ExitButton />
       <InputForm label={"아이디(이메일)"} id={"email"} ref={emailRef} />
       <InputForm label={"비밀번호"} id={"password"} ref={passwordRef} />
       <InputForm

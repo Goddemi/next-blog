@@ -6,7 +6,7 @@ const ExitButton = () => {
   const dispatch = useDispatch();
   return (
     <span
-      className="absolute -right-1 -top-2 text-gray-400 cursor-pointer"
+      className="absolute top-2 right-3 text-gray-400 cursor-pointer"
       onClick={() => dispatch(authModalOff())}
     >
       ✕

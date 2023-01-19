@@ -1,7 +1,9 @@
 import Link from "next/link";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { logoutRequest } from "../../lib/auth/auth";
 import { authModalOn } from "../../store/auth/authModal";
+import { loggedOut } from "../../store/auth/loginOut";
 import { RootState } from "../../store/store";
 
 const Nav = () => {
@@ -9,6 +11,11 @@ const Nav = () => {
   const dispatch = useDispatch();
 
   const authModalOpen = () => dispatch(authModalOn());
+
+  const logout = () => {
+    logoutRequest();
+    dispatch(loggedOut());
+  };
 
   return (
     <div className="flex justify-between p-8 text-lg">
@@ -28,7 +35,7 @@ const Nav = () => {
             <li className="px-10 cursor-pointer">
               <span>mypage</span>
             </li>
-            <li className="pl-10 cursor-pointer">
+            <li className="pl-10 cursor-pointer" onClick={logout}>
               <span>logout</span>
             </li>
           </>

@@ -19,6 +19,10 @@ export const signupErrorHandler = (result: string) => {
 };
 
 export const loginErrorHandler = (result: string) => {
+  if (result === "auth/invalid-email") {
+    return "잘못된 이메일";
+  }
+
   if (result === "auth/missing-email") {
     return "잘못된 이메일 형식";
   }
