@@ -9,7 +9,11 @@ import InputForm from "./formComponents/inputForm";
 
 //파이어베이스에서 회원가입시 어떤 결과값들이 나올 수 있는지 확인하고 그에 따른 결과문
 
-const SignupForm = () => {
+const SignupForm = ({
+  setLoginSignupChange,
+}: {
+  setLoginSignupChange: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const passwordCheckRef = useRef<HTMLInputElement>(null);
@@ -22,6 +26,10 @@ const SignupForm = () => {
 
   const [errorMessage, setErrorMessage] = useState<string | null>();
 
+  const signupToLoginChange = () => {
+    setLoginSignupChange(true);
+  };
+
   const signupHandler = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
@@ -31,19 +39,11 @@ const SignupForm = () => {
 
     if (result == "회원가입 성공") {
       setSignupResult({ signupFail: false, signupSuccess: true });
-      inputClear();
+      signupToLoginChange();
     } else {
-      const errorResult = signupErrorHandler(result);
+      const errorMessage = signupErrorHandler(result);
       setSignupResult({ signupSuccess: false, signupFail: true });
-      setErrorMessage(errorResult);
-    }
-  };
-
-  const inputClear = () => {
-    if (emailRef.current && passwordRef.current && passwordCheckRef.current) {
-      emailRef.current.value = "";
-      passwordRef.current.value = "";
-      passwordCheckRef.current.value = "";
+      setErrorMessage(errorMessage);
     }
   };
 

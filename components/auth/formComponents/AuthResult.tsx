@@ -1,9 +1,10 @@
 import React from "react";
+import { signupErrorHandler } from "../../../lib/auth/error";
 
 interface Props {
   success: boolean;
   fail: boolean;
-  message: string | null | undefined;
+  message: string | undefined | null;
 }
 
 const AuthResult = ({ success, fail, message }: Props) => {

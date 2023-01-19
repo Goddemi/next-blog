@@ -12,12 +12,12 @@ import Exit from "./formComponents/Exit";
 import InputForm from "./formComponents/inputForm";
 
 const LoginForm = ({
-  setLoginSignup,
+  setLoginSignupChange,
 }: {
-  setLoginSignup: React.Dispatch<React.SetStateAction<boolean>>;
+  setLoginSignupChange: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const loginSignup = () => {
-    setLoginSignup(false);
+  const loginToSignupChange = () => {
+    setLoginSignupChange(false);
   };
 
   const dispatch = useDispatch();
@@ -38,16 +38,18 @@ const LoginForm = ({
   ) => {
     e.preventDefault();
 
-    const result = await loginRequest(emailRef, passwordRef);
+    const email = emailRef.current?.value;
+    const password = passwordRef.current?.value;
+
+    const result = await loginRequest(email, password);
 
     if (result.message == "로그인 성공") {
       setLoginResult({ loginFail: false, loginSuccess: true });
       dispatch(loggedIn(result.uid));
       dispatch(authModalOff());
     } else {
-      const errorResult = loginErrorHandler(result);
       setLoginResult({ loginSuccess: false, loginFail: true });
-      setErrorMessage(errorResult);
+      setErrorMessage(result);
     }
   };
 
@@ -67,7 +69,7 @@ const LoginForm = ({
             로그인
           </button>
           <button
-            onClick={loginSignup}
+            onClick={loginToSignupChange}
             type="button"
             className="bg-blue-400 py-1 px-3 rounded-md"
           >

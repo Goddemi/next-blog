@@ -10,10 +10,9 @@ import {
 
 const auth = getAuth(app);
 
-export const loginRequest = async (emailRef: any, passwordRef: any) => {
-  const email = await emailRef.current?.value;
-  const password = await passwordRef.current?.value;
+const loginFn = () => {};
 
+export const loginRequest = async (email: any, password: any) => {
   try {
     const { user } = await signInWithEmailAndPassword(auth, email, password);
     const { uid } = user;

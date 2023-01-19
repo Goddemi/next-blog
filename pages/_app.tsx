@@ -3,7 +3,7 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import QueryProvider from "../provider/query";
 import { NotificationContextProvider } from "../provider/context";
-import Layout from "../components/layout/Layout";
+import MainLayout from "../components/layout/MainLayout";
 import AuthProvider from "../provider/auth";
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <AuthProvider>
       <NotificationContextProvider>
         <QueryProvider>
-          <Layout>
+          <MainLayout>
             <Head>
               <meta name="description" content="NextJS practice" />
               <meta
@@ -21,7 +21,7 @@ export default function App({ Component, pageProps }: AppProps) {
               />
             </Head>
             <Component {...pageProps} />
-          </Layout>
+          </MainLayout>
         </QueryProvider>
       </NotificationContextProvider>
     </AuthProvider>

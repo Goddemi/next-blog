@@ -7,7 +7,7 @@ import AuthModal from "../auth/Auth";
 import type { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
 
-const Layout = (props: React.PropsWithChildren) => {
+const MainLayout = (props: React.PropsWithChildren) => {
   const notificationCtx = useContext(NotificationContext);
   const activeNotification: any = notificationCtx.notification;
 
@@ -29,4 +29,4 @@ const Layout = (props: React.PropsWithChildren) => {
   );
 };
 
-export default Layout;
+export default MainLayout;
