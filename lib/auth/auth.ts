@@ -1,8 +1,11 @@
-import { app } from "../../firebase";
+import { app } from "../../ config/firebase";
+
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  setPersistence,
+  browserSessionPersistence,
 } from "firebase/auth";
 
 const auth = getAuth(app);
@@ -14,7 +17,8 @@ export const loginRequest = async (emailRef: any, passwordRef: any) => {
   try {
     const { user } = await signInWithEmailAndPassword(auth, email, password);
     const { uid } = user;
-    return "로그인 성공";
+    const result = { uid, message: "로그인 성공" };
+    return result;
   } catch (error: any) {
     const errorCode = await error.code;
     return errorCode;
@@ -35,6 +39,7 @@ export const signupRequest = async (
   }
 
   try {
+    await setPersistence(auth, browserSessionPersistence);
     const { user } = await createUserWithEmailAndPassword(
       auth,
       email,

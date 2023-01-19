@@ -23,5 +23,9 @@ export const loginErrorHandler = (result: string) => {
     return "잘못된 이메일 형식";
   }
 
+  if (result === "auth/wrong-password") {
+    return "잘못된 비밀번호";
+  }
+
   return result;
 };

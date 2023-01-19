@@ -11,11 +11,11 @@ const Layout = (props: React.PropsWithChildren) => {
   const notificationCtx = useContext(NotificationContext);
   const activeNotification: any = notificationCtx.notification;
 
-  const authState = useSelector((state: RootState) => state.auth.active);
+  const authModalOpen = useSelector((state: RootState) => state.auth.isOpen);
 
   return (
     <>
-      {authState && <AuthModal />}
+      {authModalOpen && <AuthModal />}
       <Nav />
       <main>{props.children}</main>
       {activeNotification && (

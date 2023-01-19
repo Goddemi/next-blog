@@ -6,7 +6,7 @@ import Head from "next/head";
 
 import type { RootState } from "../../store/store";
 import { useDispatch, useSelector } from "react-redux";
-import { authModalOn } from "../../store/auth-slice";
+import { authModalOn } from "../../store/auth/authModal";
 
 const ProductDetailPage = (props: ProductType) => {
   const { date, description, image, slug, title } = props;

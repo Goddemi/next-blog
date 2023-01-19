@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { authModalOff } from "../../store/auth-slice";
+import { authModalOff } from "../../store/auth/authModal";
 import AuthForm from "./AuthForm";
 
 const AuthModal = () => {

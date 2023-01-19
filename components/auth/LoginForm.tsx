@@ -1,8 +1,12 @@
 import React from "react";
-import { useState } from "react";
-import { useRef } from "react";
+import { useState, useRef } from "react";
+import { useDispatch } from "react-redux";
+
 import { loginRequest } from "../../lib/auth/auth";
 import { loginErrorHandler } from "../../lib/auth/error";
+import { authModalOff } from "../../store/auth/authModal";
+import { loggedIn } from "../../store/auth/loginOut";
+
 import AuthResult from "./formComponents/authResult";
 import Exit from "./formComponents/Exit";
 import InputForm from "./formComponents/inputForm";
@@ -15,6 +19,8 @@ const LoginForm = ({
   const loginSignup = () => {
     setLoginSignup(false);
   };
+
+  const dispatch = useDispatch();
 
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -34,20 +40,14 @@ const LoginForm = ({
 
     const result = await loginRequest(emailRef, passwordRef);
 
-    if (result == "로그인 성공") {
+    if (result.message == "로그인 성공") {
       setLoginResult({ loginFail: false, loginSuccess: true });
-      inputClear();
+      dispatch(loggedIn(result.uid));
+      dispatch(authModalOff());
     } else {
       const errorResult = loginErrorHandler(result);
       setLoginResult({ loginSuccess: false, loginFail: true });
       setErrorMessage(errorResult);
-    }
-  };
-
-  const inputClear = () => {
-    if (emailRef.current && passwordRef.current) {
-      emailRef.current.value = "";
-      passwordRef.current.value = "";
     }
   };
 
