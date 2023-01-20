@@ -19,8 +19,8 @@ export const loginRequest = async (email: any, password: any) => {
     const result = { uid, message: "로그인 성공" };
     return result;
   } catch (error: any) {
-    const errorCode = await error.code;
-    return errorCode;
+    const result = { uid: null, message: error.code };
+    return result;
   }
 };
 

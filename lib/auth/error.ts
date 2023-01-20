@@ -1,4 +1,4 @@
-export const signupErrorHandler = (result: string) => {
+export const signupErrorHandler = (result: string | undefined) => {
   if (result === "auth/invalid-email") {
     return "잘못된 이메일 형식";
   }
@@ -18,7 +18,7 @@ export const signupErrorHandler = (result: string) => {
   return result;
 };
 
-export const loginErrorHandler = (result: string) => {
+export const loginErrorHandler = (result: string | undefined) => {
   if (result === "auth/invalid-email") {
     return "잘못된 이메일";
   }
@@ -31,5 +31,10 @@ export const loginErrorHandler = (result: string) => {
     return "잘못된 비밀번호";
   }
 
+  if (result === "auth/internal-error") {
+    return "비밀번호를 입력해주세요";
+  }
+
+  console.log(result);
   return result;
 };

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import FindPassword from "./FindPassword";
 import ExitButton from "./formComponents/ExitButton";
 import GoBackButton from "./formComponents/GoBackButton";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
+import FindPassword from "./FindPassword";
 
 const AuthForm = () => {
   const [formChanger, setFormChanger] = useState({
