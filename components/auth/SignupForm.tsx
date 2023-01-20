@@ -1,19 +1,15 @@
 import React, { useRef, useState } from "react";
 import { signupRequest } from "../../lib/auth/auth";
 import { signupErrorHandler } from "../../lib/auth/error";
-import AuthResult from "./formComponents/authResult";
+import AuthResultNotification from "./formComponents/authResult";
 import InputForm from "./formComponents/inputForm";
-
-//어떻게 찢어서 분리할지 생각해보자.
-
-//파이어베이스에서 회원가입시 어떤 결과값들이 나올 수 있는지 확인하고 그에 따른 결과문
 
 const SignupForm = ({ goToLogin }: any) => {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const passwordCheckRef = useRef<HTMLInputElement>(null);
 
-  const [result, setResult] = useState();
+  const [signupRequestResult, setSignupRequestResult] = useState();
 
   const signupHandler = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -26,9 +22,9 @@ const SignupForm = ({ goToLogin }: any) => {
 
     const response = await signupRequest(email, password, passwordCheck);
 
-    setResult(response);
+    setSignupRequestResult(response);
 
-    if (result === "회원가입 성공") {
+    if (signupRequestResult === "회원가입 성공") {
       goToLogin();
     }
   };
@@ -52,7 +48,9 @@ const SignupForm = ({ goToLogin }: any) => {
           회원가입
         </button>
       </div>
-      {result && <AuthResult id={"signup"} result={result} />}
+      {signupRequestResult && (
+        <AuthResultNotification id={"signup"} result={signupRequestResult} />
+      )}
     </form>
   );
 };

@@ -9,7 +9,7 @@ interface Props {
   result: string;
 }
 
-const AuthResult = ({ id, result }: Props) => {
+const AuthResultNotification = ({ id, result }: Props) => {
   const [authResult, setAuthResult] = useState({
     success: false,
     fail: false,
@@ -46,6 +46,16 @@ const AuthResult = ({ id, result }: Props) => {
     }
   };
 
+  const findPasswordHandler = (result: string | undefined) => {
+    if (result === "변경 성공") {
+      authSuccess();
+    } else {
+      authFail();
+      const message = loginErrorHandler(result);
+      setErrorMessage(message);
+    }
+  };
+
   const initiation = () => {
     if (id === "signup") {
       signupHandler(result);
@@ -54,6 +64,10 @@ const AuthResult = ({ id, result }: Props) => {
 
     if (id === "login") {
       loginHandler(result);
+    }
+
+    if (id === "findPassword") {
+      findPasswordHandler(result);
     }
   };
 
@@ -69,4 +83,4 @@ const AuthResult = ({ id, result }: Props) => {
   );
 };
 
-export default AuthResult;
+export default AuthResultNotification;

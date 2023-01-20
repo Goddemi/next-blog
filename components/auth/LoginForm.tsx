@@ -6,7 +6,7 @@ import { loginRequest } from "../../lib/auth/auth";
 import { authModalOff } from "../../store/auth/authModal";
 import { loggedIn } from "../../store/auth/loginOut";
 
-import AuthResult from "./formComponents/authResult";
+import AuthResultNotification from "./formComponents/authResult";
 import InputForm from "./formComponents/inputForm";
 
 const LoginForm = ({ goToSignup, goToFindPassword }: any) => {
@@ -15,7 +15,7 @@ const LoginForm = ({ goToSignup, goToFindPassword }: any) => {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
-  const [result, setResult] = useState();
+  const [loginRequestResult, setLoginRequestResult] = useState();
 
   const loginHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ const LoginForm = ({ goToSignup, goToFindPassword }: any) => {
 
     const response = await loginRequest(email, password);
     const { uid, message } = response;
-    setResult(message);
+    setLoginRequestResult(message);
 
     if (uid && message === "로그인 성공") {
       dispatch(loggedIn(uid));
@@ -58,7 +58,9 @@ const LoginForm = ({ goToSignup, goToFindPassword }: any) => {
             회원가입
           </button>
         </div>
-        {result && <AuthResult id="login" result={result} />}
+        {loginRequestResult && (
+          <AuthResultNotification id="login" result={loginRequestResult} />
+        )}
       </form>
     </>
   );

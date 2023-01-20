@@ -56,14 +56,12 @@ export const logoutRequest = async () => {
   }
 };
 
-export const passwordChange = async () => {
-  const user = auth.currentUser;
-
+export const findPasswordRequest = async (email: any) => {
   try {
-    if (user && user.email) {
-      sendPasswordResetEmail(auth, user.email);
-    }
-  } catch (error) {
-    alert("로그인이 필요합니다 !");
+    const response = await sendPasswordResetEmail(auth, email);
+    return "변경 성공";
+  } catch (error: any) {
+    const errorCode = await error.code;
+    return errorCode;
   }
 };

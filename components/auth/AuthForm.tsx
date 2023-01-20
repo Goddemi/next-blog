@@ -30,7 +30,7 @@ const AuthForm = () => {
     });
   };
 
-  const goToFindpassword = () => {
+  const goToFindPassword = () => {
     setFormChanger({
       loginForm: false,
       signupForm: false,
@@ -41,14 +41,19 @@ const AuthForm = () => {
   return (
     <div className="relative p-11 bg-white text-black">
       <div>
-        {loginForm || <GoBackButton goToLogin={goToLogin} />}
+        {loginForm || (
+          <GoBackButton
+            goToLogin={goToLogin}
+            goToFindPassword={goToFindPassword}
+          />
+        )}
         <ExitButton />
       </div>
       <div className="">
         {loginForm && (
           <LoginForm
             goToSignup={goToSignup}
-            goToFindpassword={goToFindpassword}
+            goToFindPassword={goToFindPassword}
           />
         )}
         {signupForm && <SignupForm goToLogin={goToLogin} />}
