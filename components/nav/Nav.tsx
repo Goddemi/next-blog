@@ -33,7 +33,7 @@ const Nav = () => {
         {loginUser ? (
           <>
             <li className="px-10 cursor-pointer">
-              <span>mypage</span>
+              <Link href={"/mypage"}>mypage</Link>
             </li>
             <li className="pl-10 cursor-pointer" onClick={logout}>
               <span>logout</span>

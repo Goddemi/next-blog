@@ -19,6 +19,10 @@ export const signupErrorHandler = (result: string | undefined) => {
 };
 
 export const loginErrorHandler = (result: string | undefined) => {
+  if (result === "auth/user-not-found") {
+    return "없는 계정입니다.";
+  }
+
   if (result === "auth/invalid-email") {
     return "잘못된 이메일";
   }

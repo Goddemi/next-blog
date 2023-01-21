@@ -8,9 +8,12 @@ import {
   browserSessionPersistence,
   signOut,
   sendPasswordResetEmail,
+  reauthenticateWithCredential,
+  EmailAuthProvider,
+  deleteUser,
 } from "firebase/auth";
 
-const auth = getAuth(app);
+export const auth = getAuth(app);
 
 export const loginRequest = async (email: any, password: any) => {
   try {
@@ -65,3 +68,26 @@ export const findPasswordRequest = async (email: any) => {
     return errorCode;
   }
 };
+
+export const withdrawal = async (userProvidedPassword: any) => {
+  try {
+    const user = auth.currentUser;
+
+    if (user) {
+      const email = user.email as any;
+      const credential = EmailAuthProvider.credential(
+        email,
+        userProvidedPassword
+      );
+      const response = await reauthenticateWithCredential(user, credential);
+      await deleteUser(user);
+      //로그인 해제를 시켜야함.
+      return "확인 성공";
+    }
+  } catch (error: any) {
+    const errorCode = await error.code;
+    return errorCode;
+  }
+};
+
+//

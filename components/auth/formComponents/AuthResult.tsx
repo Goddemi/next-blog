@@ -56,6 +56,16 @@ const AuthResultNotification = ({ id, result }: Props) => {
     }
   };
 
+  const recheckPasswordHandler = (result: string | undefined) => {
+    if (result === "확인 성공") {
+      authSuccess();
+    } else {
+      authFail();
+      const message = loginErrorHandler(result);
+      setErrorMessage(message);
+    }
+  };
+
   const initiation = () => {
     if (id === "signup") {
       signupHandler(result);
@@ -68,6 +78,10 @@ const AuthResultNotification = ({ id, result }: Props) => {
 
     if (id === "findPassword") {
       findPasswordHandler(result);
+    }
+
+    if (id === "recheckPassword") {
+      recheckPasswordHandler(result);
     }
   };
 
