@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useRef } from "react";
 import { findPasswordRequest } from "../../lib/auth/auth";
-import AuthResultNotification from "./formComponents/authResult";
+import AuthResultNotification from "./formComponents/AuthResult";
 import InputForm from "./formComponents/InputForm";
 
 const FindPassword = () => {
