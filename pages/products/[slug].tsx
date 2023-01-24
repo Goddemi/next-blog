@@ -11,7 +11,7 @@ import { authModalOn } from "../../store/auth/authModal";
 const ProductDetailPage = (props: ProductType) => {
   const { date, description, image, slug, title } = props;
 
-  const authState = useSelector((state: RootState) => state.auth.active);
+  const authState = useSelector((state: RootState) => state.auth.isOpen);
   const dispatch = useDispatch();
 
   return (
