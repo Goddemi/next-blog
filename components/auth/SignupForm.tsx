@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import { signupRequest } from "../../lib/auth/auth";
 import { signupErrorHandler } from "../../lib/auth/error";
-import AuthResultNotification from "./formComponents/authResult";
-import InputForm from "./formComponents/inputForm";
+import AuthResultNotification from "./formComponents/AuthResult";
+import InputForm from "./formComponents/InputForm";
 
 const SignupForm = ({ goToLogin }: any) => {
   const emailRef = useRef<HTMLInputElement>(null);

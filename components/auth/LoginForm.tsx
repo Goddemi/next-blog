@@ -6,8 +6,8 @@ import { loginRequest } from "../../lib/auth/auth";
 import { authModalOff } from "../../store/auth/authModal";
 import { loggedIn } from "../../store/auth/loginOut";
 
-import AuthResultNotification from "./formComponents/authResult";
-import InputForm from "./formComponents/inputForm";
+import AuthResultNotification from "./formComponents/AuthResult";
+import InputForm from "./formComponents/InputForm";
 
 const LoginForm = ({ goToSignup, goToFindPassword }: any) => {
   const dispatch = useDispatch();

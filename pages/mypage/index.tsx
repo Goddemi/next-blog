@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
-import AuthResultNotification from "../../components/auth/formComponents/authResult";
-import InputForm from "../../components/auth/formComponents/inputForm";
+import AuthResultNotification from "../../components/auth/formComponents/AuthResult";
+import InputForm from "../../components/auth/formComponents/InputForm";
 import { auth, withdrawal } from "../../lib/auth/auth";
 import { loggedOut } from "../../store/auth/loginOut";
 
