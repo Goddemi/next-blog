@@ -4,8 +4,6 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  setPersistence,
-  browserSessionPersistence,
   signOut,
   sendPasswordResetEmail,
   reauthenticateWithCredential,
@@ -37,7 +35,6 @@ export const signupRequest = async (
   }
 
   try {
-    await setPersistence(auth, browserSessionPersistence);
     const { user } = await createUserWithEmailAndPassword(
       auth,
       email,
@@ -59,8 +56,9 @@ export const logoutRequest = async () => {
   }
 };
 
-export const findPasswordRequest = async (email: any) => {
+export const findPasswordRequest = async (user: any) => {
   try {
+    const email = user.email as any;
     const response = await sendPasswordResetEmail(auth, email);
     return "변경 성공";
   } catch (error: any) {
@@ -69,25 +67,30 @@ export const findPasswordRequest = async (email: any) => {
   }
 };
 
-export const withdrawal = async (userProvidedPassword: any) => {
+export const passwordRecheckRequest = async (
+  user: any,
+  userProvidedPassword: any
+) => {
   try {
-    const user = auth.currentUser;
-
-    if (user) {
-      const email = user.email as any;
-      const credential = EmailAuthProvider.credential(
-        email,
-        userProvidedPassword
-      );
-      const response = await reauthenticateWithCredential(user, credential);
-      await deleteUser(user);
-      //로그인 해제를 시켜야함.
-      return "확인 성공";
-    }
+    const email = user.email as any;
+    const credential = EmailAuthProvider.credential(
+      email,
+      userProvidedPassword
+    );
+    const response = await reauthenticateWithCredential(user, credential);
+    return "확인 성공";
   } catch (error: any) {
     const errorCode = await error.code;
     return errorCode;
   }
 };
 
-//
+export const withdrawal = async (user: any) => {
+  try {
+    await deleteUser(user);
+    return "삭제 성공";
+  } catch (error: any) {
+    const errorCode = await error.code;
+    return errorCode;
+  }
+};

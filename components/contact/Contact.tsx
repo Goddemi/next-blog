@@ -1,8 +1,17 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { auth } from "../../lib/auth/auth";
 import { postContent } from "../../lib/products/postContent";
 import { NotificationContext } from "../../store/notification-context";
 
 const ContactForm = () => {
+  const [userEmail, setUserEmail] = useState<string | undefined>();
+
+  useEffect(() => {
+    if (auth.currentUser?.email) {
+      setUserEmail(auth.currentUser.email);
+    }
+  }, [userEmail]);
+
   const emailRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLTextAreaElement>(null);
 
@@ -56,6 +65,7 @@ const ContactForm = () => {
             type="email"
             ref={emailRef}
             className=" bg-gray-800 "
+            value={userEmail}
           />
         </div>
         <div className="p-10 pl-14 flex justify-center items-center">

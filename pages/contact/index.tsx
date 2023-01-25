@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useSelector } from "react-redux";
 import ContactForm from "../../components/contact/Contact";
 
 const ContactPage = () => {
