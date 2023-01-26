@@ -23,9 +23,11 @@ const SignupForm = ({ goToLogin }: any) => {
 
     setSignupRequestResult(response);
 
-    if (signupRequestResult === "회원가입 성공") {
-      goToLogin();
-    }
+    setTimeout(() => {
+      if (response === "회원가입 성공") {
+        goToLogin();
+      }
+    }, 1000);
   };
 
   return (

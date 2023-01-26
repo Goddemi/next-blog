@@ -33,7 +33,7 @@ const PersonalInfoChange = ({ user, setRecheckPasswordResult }: any) => {
     if (confirm("정말 삭제하시겠습니까?") === true) {
       const response = await recheckPasswordHandler();
 
-      if (response === "확인 성공") {
+      if (response === "성공") {
         withdrawal(user);
         dispatch(loggedOut());
         router.push("/");
@@ -47,7 +47,7 @@ const PersonalInfoChange = ({ user, setRecheckPasswordResult }: any) => {
     e.preventDefault();
     const response = await recheckPasswordHandler();
 
-    if (response === "확인 성공") {
+    if (response === "성공") {
       findPasswordRequest(user);
     }
   };

@@ -26,7 +26,7 @@ export default async function handler(
       `https://youneedverse-e9492-default-rtdb.asia-southeast1.firebasedatabase.app/contact.json`,
       data
     );
-    res.status(201).send("전송 성공");
+    res.status(201).send("성공");
   } catch (error) {
     console.log(error);
   }

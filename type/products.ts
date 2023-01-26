@@ -5,6 +5,8 @@ export interface ProductType {
   date: string;
   description: string;
   isFeatured: boolean;
+  id?: string;
+  user?: string;
 }
 
 export interface AllProductsType {

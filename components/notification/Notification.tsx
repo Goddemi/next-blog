@@ -1,7 +1,11 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { loginErrorHandler, signupErrorHandler } from "../../lib/auth/error";
+import {
+  loginErrorHandler,
+  signupErrorHandler,
+  errorHandler,
+} from "../../lib/auth/error";
 
 interface Props {
   id: string;
@@ -45,32 +49,12 @@ const Notification = ({ id, result }: Props) => {
     }
   };
 
-  const findPasswordHandler = (result: string | undefined) => {
-    if (result === "변경 성공") {
+  const requestHandler = (result: string | undefined) => {
+    if (result === "성공") {
       requestSuccess();
     } else {
       requestFail();
-      const message = loginErrorHandler(result);
-      setErrorMessage(message);
-    }
-  };
-
-  const recheckPasswordHandler = (result: string | undefined) => {
-    if (result === "확인 성공") {
-      requestSuccess();
-    } else {
-      requestFail();
-      const message = loginErrorHandler(result);
-      setErrorMessage(message);
-    }
-  };
-
-  const contactRequestHandler = (result: string | undefined) => {
-    if (result === "전송 성공") {
-      requestSuccess();
-    } else {
-      requestFail();
-      const message = loginErrorHandler(result);
+      const message = errorHandler(result);
       setErrorMessage(message);
     }
   };
@@ -78,22 +62,21 @@ const Notification = ({ id, result }: Props) => {
   const initiation = () => {
     if (id === "signup") {
       signupHandler(result);
+      return;
     }
 
     if (id === "login") {
       loginHandler(result);
+      return;
     }
 
-    if (id === "findPassword") {
-      findPasswordHandler(result);
-    }
-
-    if (id === "recheckPassword") {
-      recheckPasswordHandler(result);
-    }
-
-    if (id === "contact") {
-      contactRequestHandler(result);
+    if (
+      id === "findPassword" ||
+      id === "recheckPassword" ||
+      id === "contact" ||
+      id === "cart"
+    ) {
+      requestHandler(result);
     }
   };
 

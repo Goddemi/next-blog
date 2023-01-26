@@ -40,7 +40,6 @@ export const signupRequest = async (
       email,
       password
     );
-    // const { uid } = user;
     return "회원가입 성공";
   } catch (error: any) {
     const errorCode = await error.code;
@@ -61,13 +60,13 @@ export const findPasswordRequest = async (key: any) => {
     //로그인 창 비밀번호 찾기에서 그냥 이메일로 바로 오는 경우
     if (typeof key === "string") {
       const response = await sendPasswordResetEmail(auth, key);
-      return "변경 성공";
+      return "성공";
     }
 
     //로그인 되어있는 상태에서 마이페이지 비밀번호 찾기 하는 경우.
     const email = key.email as any;
     const response = await sendPasswordResetEmail(auth, email);
-    return "변경 성공";
+    return "성공";
   } catch (error: any) {
     const errorCode = await error.code;
     return errorCode;
@@ -85,7 +84,7 @@ export const passwordRecheckRequest = async (
       userProvidedPassword
     );
     const response = await reauthenticateWithCredential(user, credential);
-    return "확인 성공";
+    return "성공";
   } catch (error: any) {
     const errorCode = await error.code;
     return errorCode;

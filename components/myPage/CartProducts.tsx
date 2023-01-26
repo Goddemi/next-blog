@@ -7,16 +7,19 @@ import ProductsGrid from "../products/ProductsGrid";
 const CartProducts = ({ user }: any) => {
   const [data, setData] = useState();
 
-  const getCartsHandler = () => {
-    getCarts(user)
-      .then((result) => setData(result))
-      .catch((error) => console.log(error))
-      .finally(() => console.log(data));
-  };
-
   useEffect(() => {
+    const getCartsHandler = async () => {
+      try {
+        const result = await getCarts(user);
+        setData(result);
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     getCartsHandler();
-  }, []);
+  }, [data, user]);
 
   if (!data) {
     return <div>장바구니가 비었습니다.</div>;
@@ -24,8 +27,8 @@ const CartProducts = ({ user }: any) => {
 
   let newData: any = [];
 
-  for (let ele in data as any) {
-    newData = [...newData, data[ele]];
+  for (let ele in data as object) {
+    newData = [...newData, { ...(data[ele] as any), id: ele }];
   }
 
   return (
@@ -36,6 +39,3 @@ const CartProducts = ({ user }: any) => {
 };
 
 export default CartProducts;
-
-//get 해서 정보를 가져온다.
-//매핑한다.

@@ -38,7 +38,12 @@ export const loginErrorHandler = (result: string | undefined) => {
   if (result === "auth/internal-error") {
     return "비밀번호를 입력해주세요";
   }
+};
 
-  console.log(result);
+export const errorHandler = (result: string | undefined) => {
+  if (result === "auth/user-not-found") {
+    return "없는 계정입니다.";
+  }
+
   return result;
 };
