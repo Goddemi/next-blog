@@ -25,10 +25,11 @@ const ProductDetailPage = (props: ProductType) => {
     const uid = loginUser.uid;
     const reqBody = {
       uid,
-      title,
+      cartData: props,
     };
 
     putContent("/api/cart", reqBody).then((res) => console.log(res));
+    //장바구니 담기 성공 ! 혹은 실패 ! 해야함
   };
 
   return (
