@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useRef } from "react";
 import { findPasswordRequest } from "../../lib/auth/auth";
-import AuthResultNotification from "./formComponents/AuthResult";
+import Notification from "../notification/Notification";
 import InputForm from "./formComponents/InputForm";
 
 const FindPassword = () => {
@@ -37,10 +37,7 @@ const FindPassword = () => {
       </form>
 
       {findPasswordRequestResult && (
-        <AuthResultNotification
-          id={"findPassword"}
-          result={findPasswordRequestResult}
-        />
+        <Notification id={"findPassword"} result={findPasswordRequestResult} />
       )}
     </>
   );

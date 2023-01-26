@@ -26,8 +26,7 @@ export default async function handler(
       `https://youneedverse-e9492-default-rtdb.asia-southeast1.firebasedatabase.app/contact.json`,
       data
     );
-    console.log(response);
-    res.status(201).json({ message: "api route : good", email: data });
+    res.status(201).send("전송 성공");
   } catch (error) {
     console.log(error);
   }

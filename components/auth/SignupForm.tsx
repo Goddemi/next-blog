@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import { signupRequest } from "../../lib/auth/auth";
-import { signupErrorHandler } from "../../lib/auth/error";
-import AuthResultNotification from "./formComponents/AuthResult";
+import Notification from "../notification/Notification";
 import InputForm from "./formComponents/InputForm";
 
 const SignupForm = ({ goToLogin }: any) => {
@@ -49,7 +48,7 @@ const SignupForm = ({ goToLogin }: any) => {
         </button>
       </div>
       {signupRequestResult && (
-        <AuthResultNotification id={"signup"} result={signupRequestResult} />
+        <Notification id={"signup"} result={signupRequestResult} />
       )}
     </form>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AuthResultNotification from "../../components/auth/formComponents/AuthResult";
+import Notification from "../../components/notification/Notification";
 import CartProducts from "../../components/myPage/CartProducts";
 import { auth } from "../../lib/auth/auth";
 import PersonalInfoChange from "../../components/myPage/PersonalInfo";
@@ -27,10 +27,7 @@ const Mypage = (props: any) => {
             setRecheckPasswordResult={setRecheckPasswordResult}
           />
           {recheckPasswordResult && (
-            <AuthResultNotification
-              id="recheckPassword"
-              result={recheckPasswordResult}
-            />
+            <Notification id="recheckPassword" result={recheckPasswordResult} />
           )}
         </div>
       ) : (

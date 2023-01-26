@@ -22,7 +22,7 @@ export default async function handler(
       `https://youneedverse-e9492-default-rtdb.asia-southeast1.firebasedatabase.app/cart/${user}.json`,
       newData
     );
-    res.status(201).json({ message: "api route : good" });
+    res.status(201).json({ message: "success" });
   } catch (error) {
     console.log(error);
   }

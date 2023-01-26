@@ -6,7 +6,7 @@ import { loginRequest } from "../../lib/auth/auth";
 import { authModalOff } from "../../store/auth/authModal";
 import { loggedIn } from "../../store/auth/loginOut";
 
-import AuthResultNotification from "./formComponents/AuthResult";
+import Notification from "../notification/Notification";
 import InputForm from "./formComponents/InputForm";
 
 const LoginForm = ({ goToSignup, goToFindPassword }: any) => {
@@ -59,7 +59,7 @@ const LoginForm = ({ goToSignup, goToFindPassword }: any) => {
           </button>
         </div>
         {loginRequestResult && (
-          <AuthResultNotification id="login" result={loginRequestResult} />
+          <Notification id="login" result={loginRequestResult} />
         )}
       </form>
     </>

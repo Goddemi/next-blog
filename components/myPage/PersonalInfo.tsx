@@ -8,11 +8,13 @@ import {
 } from "../../lib/auth/auth";
 import { loggedOut } from "../../store/auth/loginOut";
 import InputForm from "../../components/auth/formComponents/InputForm";
+import { useRouter } from "next/router";
 
 const PersonalInfoChange = ({ user, setRecheckPasswordResult }: any) => {
   const recheckPasswordRef = useRef<HTMLInputElement>(null);
 
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const recheckPasswordHandler = async () => {
     const recheckPassword = recheckPasswordRef.current?.value;
@@ -34,6 +36,7 @@ const PersonalInfoChange = ({ user, setRecheckPasswordResult }: any) => {
       if (response === "확인 성공") {
         withdrawal(user);
         dispatch(loggedOut());
+        router.push("/");
       }
     }
   };
@@ -63,10 +66,11 @@ const PersonalInfoChange = ({ user, setRecheckPasswordResult }: any) => {
         </div>
 
         <button
-          className="ml-5 p-5 bg-orange-500"
+          className="ml-5 p-2.5  bg-orange-500"
           onClick={passwordChangeHandler}
         >
-          비밀번호 변경
+          비밀번호 변경 <br />
+          <span className="text-sm">(이메일로 변경 링크 전송)</span>
         </button>
 
         <button className="ml-5 p-5 bg-cyan-500" onClick={userDeleteHandler}>
