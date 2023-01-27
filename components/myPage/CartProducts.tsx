@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { forEachChild } from "typescript";
+import React, { useCallback, useEffect, useState } from "react";
 import { getCarts } from "../../lib/cart/getCarts";
 
 import ProductsGrid from "../products/ProductsGrid";
@@ -12,7 +11,6 @@ const CartProducts = ({ user }: any) => {
       try {
         const result = await getCarts(user);
         setData(result);
-        console.log(data);
       } catch (error) {
         console.log(error);
       }

@@ -27,10 +27,12 @@ const LoginForm = ({ goToSignup, goToFindPassword }: any) => {
     const { uid, message } = response;
     setLoginRequestResult(message);
 
-    if (uid && message === "로그인 성공") {
-      dispatch(loggedIn(uid));
-      dispatch(authModalOff());
-    }
+    setTimeout(() => {
+      if (uid && message === "로그인 성공") {
+        dispatch(loggedIn(uid));
+        dispatch(authModalOff());
+      }
+    }, 1000);
   };
 
   return (

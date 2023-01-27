@@ -4,14 +4,7 @@ import { postContent } from "../../lib/products/postContent";
 import Notification from "../notification/Notification";
 
 const ContactForm = () => {
-  const [userEmail, setUserEmail] = useState<any>();
   const [contactResult, setContactResult] = useState<any>();
-
-  useEffect(() => {
-    if (auth.currentUser) {
-      setUserEmail(auth.currentUser.email);
-    }
-  }, [userEmail]);
 
   const emailRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLTextAreaElement>(null);
@@ -52,7 +45,6 @@ const ContactForm = () => {
               type="email"
               ref={emailRef}
               className=" bg-gray-800 "
-              value={userEmail}
             />
           </div>
           <div className="p-10 pl-14 flex justify-center items-center">
