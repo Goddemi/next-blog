@@ -1,4 +1,3 @@
-import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import {
@@ -77,6 +76,7 @@ const Notification = ({ id, result }: Props) => {
       id === "cart"
     ) {
       requestHandler(result);
+      return;
     }
   };
 

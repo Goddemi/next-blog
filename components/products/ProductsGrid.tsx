@@ -1,4 +1,3 @@
-import React from "react";
 import ProductsItem from "./ProductsItem";
 
 import { ProductsArrayType } from "../../type/products";

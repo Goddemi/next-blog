@@ -1,8 +1,8 @@
+import { useQuery } from "@tanstack/react-query";
 import Head from "next/head";
+import { getProductsWithArray } from "../lib/products/getProducts";
 import Hero from "../components/mainPage/Hero";
 import FeaturedProduct from "../components/mainPage/FeaturedProduct";
-import { useQuery } from "@tanstack/react-query";
-import { getProductsWithArray } from "../lib/products/getProducts";
 import { GetStaticProps } from "next";
 import { ProductsArrayType } from "../type/products";
 

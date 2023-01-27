@@ -21,7 +21,7 @@ export default async function handler(
       );
       res.status(201).send("성공");
     } catch (error) {
-      console.log(error);
+      res.status(500).send({ error: "데이터 PUT 실패" });
     }
   }
   if (req.method === "DELETE") {
@@ -32,7 +32,7 @@ export default async function handler(
       );
       res.status(201).send("성공");
     } catch (error) {
-      return "삭제 실패";
+      res.status(500).send({ error: "데이터 삭제 실패" });
     }
   }
 }

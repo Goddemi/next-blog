@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { auth } from "../../lib/auth/auth";
+import { useRef, useState } from "react";
 import { postContent } from "../../lib/products/postContent";
 import Notification from "../notification/Notification";
 

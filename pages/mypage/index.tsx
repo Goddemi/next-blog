@@ -3,7 +3,6 @@ import Notification from "../../components/notification/Notification";
 import CartProducts from "../../components/myPage/CartProducts";
 import { auth } from "../../lib/auth/auth";
 import PersonalInfoChange from "../../components/myPage/PersonalInfo";
-import { getCarts } from "../../lib/cart/getCarts";
 
 const Mypage = (props: any) => {
   const user = auth.currentUser;

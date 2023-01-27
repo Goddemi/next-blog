@@ -28,6 +28,6 @@ export default async function handler(
     );
     res.status(201).send("성공");
   } catch (error) {
-    console.log(error);
+    res.status(500).send("POST 실패");
   }
 }

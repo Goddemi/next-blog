@@ -9,6 +9,7 @@ export const postContent = async (url: string, data: object) => {
     });
     return res;
   } catch (error) {
+    console.log("POST에러");
     throw new Error();
   }
 };

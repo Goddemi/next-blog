@@ -1,5 +1,3 @@
-import React from "react";
-
 const GoBackButton = ({ goToLogin }: any) => {
   return (
     <span

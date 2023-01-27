@@ -1,4 +1,3 @@
-import React from "react";
 import ProductsGrid from "../products/ProductsGrid";
 
 import { ProductsArrayType } from "../../type/products";

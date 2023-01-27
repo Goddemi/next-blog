@@ -1,39 +1,15 @@
-import Image from "next/image";
-import { getProducts } from "../../lib/products/getProducts";
-import { GetStaticProps, GetStaticPaths } from "next";
-import { ProductType } from "../../type/products";
-import Head from "next/head";
-
-import { useDispatch } from "react-redux";
-import { authModalOn } from "../../store/auth/authModal";
-import { auth } from "../../lib/auth/auth";
-import { putContent } from "../../lib/cart/putContent";
-import Notification from "../../components/notification/Notification";
 import { useState } from "react";
+import { getProducts } from "../../lib/products/getProducts";
+import Head from "next/head";
+import Image from "next/image";
+import AddCartButton from "../../components/products/productsElements/AddCartButton";
+import Notification from "../../components/notification/Notification";
+import { ProductType } from "../../type/products";
+import { GetStaticProps, GetStaticPaths } from "next";
 
 const ProductDetailPage = (props: ProductType) => {
   const { date, description, image, slug, title } = props;
   const [cartRequestResult, setCartRequestResult] = useState<any>();
-
-  const dispatch = useDispatch();
-
-  const addCartHandler = async () => {
-    const loginUser = auth.currentUser;
-
-    if (!loginUser) {
-      dispatch(authModalOn());
-      return;
-    }
-
-    const uid = loginUser.uid;
-    const reqBody = {
-      uid,
-      cartData: props,
-    };
-
-    const response = await putContent("/api/cart", reqBody);
-    setCartRequestResult(response.data);
-  };
 
   return (
     <>
@@ -59,14 +35,10 @@ const ProductDetailPage = (props: ProductType) => {
             <span className="block">{date}</span>
             <div className="mt-5">{description}</div>
           </div>
-          <div className="text-end">
-            <button
-              className="py-4 px-5 rounded bg-orange-600"
-              onClick={addCartHandler}
-            >
-              장바구니
-            </button>
-          </div>
+          <AddCartButton
+            data={props}
+            setCartRequestResult={setCartRequestResult}
+          />
         </div>
       </div>
       <div className="flex justify-center">

@@ -1,9 +1,8 @@
-import React from "react";
 import { useState } from "react";
 import { useRef } from "react";
 import { findPasswordRequest } from "../../lib/auth/auth";
 import Notification from "../notification/Notification";
-import InputForm from "./formComponents/InputForm";
+import InputForm from "./formElements/InputForm";
 
 const FindPassword = () => {
   const emailRef = useRef<HTMLInputElement>(null);

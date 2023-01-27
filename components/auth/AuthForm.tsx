@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import ExitButton from "./formComponents/ExitButton";
-import GoBackButton from "./formComponents/GoBackButton";
+import { useState } from "react";
+import ExitButton from "./formElements/ExitButton";
+import GoBackButton from "./formElements/GoBackButton";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import FindPassword from "./FindPassword";

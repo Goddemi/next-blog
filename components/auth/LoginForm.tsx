@@ -1,13 +1,10 @@
-import React from "react";
 import { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
-
 import { loginRequest } from "../../lib/auth/auth";
 import { authModalOff } from "../../store/auth/authModal";
 import { loggedIn } from "../../store/auth/loginOut";
-
 import Notification from "../notification/Notification";
-import InputForm from "./formComponents/InputForm";
+import InputForm from "./formElements/InputForm";
 
 const LoginForm = ({ goToSignup, goToFindPassword }: any) => {
   const dispatch = useDispatch();

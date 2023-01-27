@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getCarts } from "../../lib/cart/getCarts";
 
 import ProductsGrid from "../products/ProductsGrid";
@@ -20,13 +20,13 @@ const CartProducts = ({ user }: any) => {
   }, [data, user]);
 
   if (!data) {
-    return <div>장바구니가 비었습니다.</div>;
+    return <div className="text-white">장바구니가 비었습니다.</div>;
   }
 
   let newData: any = [];
 
   for (let ele in data as object) {
-    newData = [...newData, { ...(data[ele] as any), id: ele }];
+    newData = [...newData, { ...(data[ele] as object), id: ele }];
   }
 
   return (

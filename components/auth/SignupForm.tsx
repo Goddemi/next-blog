@@ -1,7 +1,7 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { signupRequest } from "../../lib/auth/auth";
 import Notification from "../notification/Notification";
-import InputForm from "./formComponents/InputForm";
+import InputForm from "./formElements/InputForm";
 
 const SignupForm = ({ goToLogin }: any) => {
   const emailRef = useRef<HTMLInputElement>(null);

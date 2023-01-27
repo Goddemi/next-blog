@@ -2,12 +2,10 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
-
 import { ProductType } from "../../type/products";
 
 const ProductsItem = ({ product }: { product: ProductType }) => {
-  const { slug, title, image, date, description, user } = product;
+  const { slug, title, image, date, user } = product;
   const router = useRouter();
   const pathName = router.pathname;
 
@@ -19,6 +17,7 @@ const ProductsItem = ({ product }: { product: ProductType }) => {
 
   const linkPath = `/products/${slug}`;
 
+  //mypage 에서 확인할 때.
   const deleteCartHandler = (e: any) => {
     e.preventDefault();
     const clickedProductId = e.target.parentElement.id;

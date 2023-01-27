@@ -1,4 +1,3 @@
-import React from "react";
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import {
@@ -7,7 +6,7 @@ import {
   withdrawal,
 } from "../../lib/auth/auth";
 import { loggedOut } from "../../store/auth/loginOut";
-import InputForm from "../../components/auth/formComponents/InputForm";
+import InputForm from "../auth/formElements/InputForm";
 import { useRouter } from "next/router";
 
 const PersonalInfoChange = ({ user, setRecheckPasswordResult }: any) => {

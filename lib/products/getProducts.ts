@@ -2,11 +2,16 @@ import { ProductsArrayType } from "../../type/products";
 import axios from "axios";
 
 export const getProducts = async (name = "") => {
-  const response = await axios(
-    `https://youneedverse-e9492-default-rtdb.asia-southeast1.firebasedatabase.app/products/${name}.json`
-  );
+  try {
+    const response = await axios(
+      `https://youneedverse-e9492-default-rtdb.asia-southeast1.firebasedatabase.app/products/${name}.json`
+    );
 
-  return response.data;
+    return response.data;
+  } catch (error) {
+    console.log("상품 로딩 에러");
+    throw new Error();
+  }
 };
 
 export const getProductsWithArray = async () => {

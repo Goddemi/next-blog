@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutRequest } from "../../lib/auth/auth";
 import { authModalOn } from "../../store/auth/authModal";
@@ -8,11 +7,13 @@ import { loggedOut } from "../../store/auth/loginOut";
 import { RootState } from "../../store/store";
 
 const Nav = () => {
-  const loginUser = useSelector((state: RootState) => state.loginOut.uid);
   const router = useRouter();
   const dispatch = useDispatch();
 
+  const loginUser = useSelector((state: RootState) => state.loginOut.uid);
+
   const authModalOpen = () => dispatch(authModalOn());
+
   const logout = () => {
     logoutRequest();
     dispatch(loggedOut());

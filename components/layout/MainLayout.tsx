@@ -1,6 +1,3 @@
-import React, { useContext } from "react";
-
-import Notification from "../notification/Notification";
 import Nav from "../nav/Nav";
 import AuthModal from "../auth/Auth";
 

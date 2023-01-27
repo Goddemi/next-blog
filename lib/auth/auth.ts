@@ -1,5 +1,4 @@
 import { app } from "../../ config/firebase";
-
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -57,13 +56,13 @@ export const logoutRequest = async () => {
 
 export const findPasswordRequest = async (key: any) => {
   try {
-    //로그인 창 비밀번호 찾기에서 그냥 이메일로 바로 오는 경우
+    //로그인 창 안의 비밀번호 찾기. 이메일 별도 직접 입력.
     if (typeof key === "string") {
       const response = await sendPasswordResetEmail(auth, key);
       return "성공";
     }
 
-    //로그인 되어있는 상태에서 마이페이지 비밀번호 찾기 하는 경우.
+    //로그인 되어있는 상태에서 마이페이지 비밀번호 찾기. 로그인한 이메일로 전송.
     const email = key.email as any;
     const response = await sendPasswordResetEmail(auth, email);
     return "성공";

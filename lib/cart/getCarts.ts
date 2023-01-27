@@ -9,6 +9,6 @@ export const getCarts = async (user: any) => {
     }
     return response.data;
   } catch (error) {
-    console.log("장바구니 데이터 로딩 오류");
+    return "장바구니 데이터 로딩 오류";
   }
 };

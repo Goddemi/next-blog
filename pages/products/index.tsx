@@ -1,10 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import Head from "next/head";
 import { getProductsWithArray } from "../../lib/products/getProducts";
 import ProductsGrid from "../../components/products/ProductsGrid";
 import { GetStaticProps } from "next";
 import { ProductsArrayType } from "../../type/products";
-import Head from "next/head";
 
 const AllProductsPage = ({
   productsData,
