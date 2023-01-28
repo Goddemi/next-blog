@@ -8,12 +8,15 @@ import {
   reauthenticateWithCredential,
   EmailAuthProvider,
   deleteUser,
+  setPersistence,
+  browserSessionPersistence,
 } from "firebase/auth";
 
-export const auth = getAuth(app);
+export const auth: any = getAuth(app);
 
 export const loginRequest = async (email: any, password: any) => {
   try {
+    await setPersistence(auth, browserSessionPersistence);
     const { user } = await signInWithEmailAndPassword(auth, email, password);
     const { uid } = user;
     const result = { uid, message: "로그인 성공" };

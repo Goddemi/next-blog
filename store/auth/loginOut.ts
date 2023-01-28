@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+
 export interface LoginInfo {
   uid: string | undefined;
 }
@@ -12,7 +13,7 @@ const loginOutSlice = createSlice({
   name: "loginOut",
   initialState,
   reducers: {
-    loggedIn: (state, action: PayloadAction<string>) => {
+    loggedIn: (state, action: PayloadAction<any>) => {
       state.uid = action.payload;
     },
     loggedOut: (state) => {

@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { loginRequest } from "../../lib/auth/auth";
+import { getSession, useSession } from "../../lib/auth/getSession";
 import { authModalOff } from "../../store/auth/authModal";
 import { loggedIn } from "../../store/auth/loginOut";
 import Notification from "../notification/Notification";
@@ -26,10 +27,10 @@ const LoginForm = ({ goToSignup, goToFindPassword }: any) => {
 
     setTimeout(() => {
       if (uid && message === "로그인 성공") {
-        dispatch(loggedIn(uid));
+        dispatch(loggedIn(getSession()));
         dispatch(authModalOff());
       }
-    }, 1000);
+    }, 500);
   };
 
   return (
