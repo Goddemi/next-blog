@@ -15,6 +15,10 @@ export const signupErrorHandler = (result: string | undefined) => {
     return "비밀번호와 비밀번호 확인이 다릅니다.";
   }
 
+  if (result === " auth/internal-error") {
+    return "잘못된 이메일";
+  }
+
   return result;
 };
 
@@ -49,6 +53,10 @@ export const errorHandler = (result: string | undefined) => {
   }
   if (result === "auth/wrong-password") {
     return "잘못된 비밀번호";
+  }
+
+  if (result === "auth/invalid-email") {
+    return "잘못된 이메일";
   }
 
   return result;
