@@ -27,7 +27,11 @@ const AllProductsPage = ({
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div className="text-6xl text-center">All products</div>
-      <ProductsGrid products={data} />
+      {typeof data === "string" ? (
+        <div className="mt-5 text-center">{data}</div>
+      ) : (
+        <ProductsGrid products={data} />
+      )}
     </>
   );
 };
@@ -36,12 +40,7 @@ export default AllProductsPage;
 
 export const getStaticProps: GetStaticProps = async () => {
   let productsData;
-
-  try {
-    productsData = await getProductsWithArray();
-  } catch (error) {
-    console.log(error);
-  }
+  productsData = await getProductsWithArray();
 
   return { props: { productsData } };
 };

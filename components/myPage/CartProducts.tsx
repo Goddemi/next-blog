@@ -12,7 +12,7 @@ const CartProducts = ({ user }: any) => {
         const result = await getCarts(user);
         setData(result);
       } catch (error) {
-        console.log(error);
+        return <div>장바구니 데이터 get 에러</div>;
       }
     };
 

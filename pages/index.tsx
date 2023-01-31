@@ -28,19 +28,18 @@ export default function Home({
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Hero />
-      <FeaturedProduct products={data} />
+      {typeof data === "string" ? (
+        <div className="mt-5 text-center">{data}</div>
+      ) : (
+        <FeaturedProduct products={data} />
+      )}
     </>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
   let productsData;
-
-  try {
-    productsData = await getProductsWithArray();
-  } catch (error) {
-    console.log(error);
-  }
+  productsData = await getProductsWithArray();
 
   return { props: { productsData } };
 };

@@ -21,6 +21,9 @@ const AddCartButton = ({ data, setCartRequestResult }: any) => {
     };
 
     const response = await putContent("/api/cart", reqBody);
+    if (typeof response === "string") {
+      return <div>{response}</div>;
+    }
     setCartRequestResult(response.data);
   };
   return (

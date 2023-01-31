@@ -9,7 +9,6 @@ export const putContent = async (url: string, data: any) => {
     });
     return res;
   } catch (error) {
-    console.log("장바구니 입력 에러");
-    throw new Error();
+    return "장바구니 입력 에러";
   }
 };

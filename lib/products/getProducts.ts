@@ -9,13 +9,16 @@ export const getProducts = async (name = "") => {
 
     return response.data;
   } catch (error) {
-    console.log("상품 로딩 에러");
-    throw new Error();
+    return "상품 로딩 에러";
   }
 };
 
 export const getProductsWithArray = async () => {
   const products = await getProducts();
+
+  if (typeof products === "string") {
+    return products;
+  }
 
   let ArrayProducts: ProductsArrayType = [];
 

@@ -11,6 +11,10 @@ const ProductDetailPage = (props: ProductType) => {
   const { date, description, image, slug, title } = props;
   const [cartRequestResult, setCartRequestResult] = useState<any>();
 
+  if (!props) {
+    return <div> 상품 로딩 에러 </div>;
+  }
+
   return (
     <>
       <div className="flex justify-center items-center mt-5">
@@ -62,7 +66,6 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
   const { slug } = params;
 
   const detailProduct = await getProducts(slug);
-
   return { props: detailProduct, revalidate: 600 };
 };
 

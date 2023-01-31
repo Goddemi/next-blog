@@ -25,6 +25,11 @@ const ContactForm = () => {
     };
 
     const response = await postContent("/api/contact", reqBody);
+
+    if (typeof response === "string") {
+      return <div>{response}</div>;
+    }
+
     setContactResult(response.data);
   };
 
