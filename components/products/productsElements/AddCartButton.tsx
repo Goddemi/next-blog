@@ -3,7 +3,11 @@ import { authModalOn } from "../../../store/auth/authModal";
 import { auth } from "../../../lib/auth/auth";
 import { putContent } from "../../../lib/cart/putContent";
 
-const AddCartButton = ({ data, setCartRequestResult }: any) => {
+const AddCartButton = ({
+  data,
+  setCartRequestResult,
+  setPutCartLoading,
+}: any) => {
   const dispatch = useDispatch();
 
   const addCartHandler = async () => {
@@ -13,7 +17,7 @@ const AddCartButton = ({ data, setCartRequestResult }: any) => {
       dispatch(authModalOn());
       return;
     }
-
+    setPutCartLoading(true);
     const uid = loginUser.uid;
     const reqBody = {
       uid,
@@ -24,6 +28,7 @@ const AddCartButton = ({ data, setCartRequestResult }: any) => {
     if (typeof response === "string") {
       return <div>{response}</div>;
     }
+    setPutCartLoading(false);
     setCartRequestResult(response.data);
   };
   return (

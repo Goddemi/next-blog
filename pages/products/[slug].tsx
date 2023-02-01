@@ -10,6 +10,7 @@ import { GetStaticProps, GetStaticPaths } from "next";
 const ProductDetailPage = (props: ProductType) => {
   const { date, description, image, slug, title } = props;
   const [cartRequestResult, setCartRequestResult] = useState<any>();
+  const [putCartLoading, setPutCartLoading] = useState(false);
 
   if (!props) {
     return <div> 상품 로딩 에러 </div>;
@@ -42,10 +43,14 @@ const ProductDetailPage = (props: ProductType) => {
           <AddCartButton
             data={props}
             setCartRequestResult={setCartRequestResult}
+            setPutCartLoading={setPutCartLoading}
           />
         </div>
       </div>
       <div className="flex justify-center">
+        {putCartLoading && (
+          <span className='ml-3 text-green-400"'>장바구니 담는 중...</span>
+        )}
         {cartRequestResult && (
           <Notification id="cart" result={cartRequestResult} />
         )}
