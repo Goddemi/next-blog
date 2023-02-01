@@ -27,7 +27,7 @@ export default async function handler(
   if (req.method === "DELETE") {
     try {
       const { user, productId } = req.body;
-      axios.delete(
+      const response = await axios.delete(
         `https://youneedverse-e9492-default-rtdb.asia-southeast1.firebasedatabase.app/cart/${user}/${productId}.json`
       );
       res.status(201).send("성공");
