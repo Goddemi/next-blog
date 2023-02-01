@@ -1,12 +1,10 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { auth, logoutRequest } from "../../lib/auth/auth";
-import { getSession, useSession } from "../../lib/auth/getSession";
+import { logoutRequest } from "../../lib/auth/auth";
 import { authModalOn } from "../../store/auth/authModal";
 import { loggedIn, loggedOut } from "../../store/auth/loginOut";
-import { RootState } from "../../store/store";
 
 const Nav = () => {
   const router = useRouter();
@@ -22,13 +20,13 @@ const Nav = () => {
       const sessionId = sessionContent.uid;
       dispatch(loggedIn(sessionId));
     }
-  }, [loginUser]);
+  }, []);
 
   const authModalOpen = () => dispatch(authModalOn());
 
-  const logout = () => {
-    logoutRequest();
+  const logout = async () => {
     dispatch(loggedOut());
+    logoutRequest();
     router.push("/");
   };
 
@@ -64,4 +62,4 @@ const Nav = () => {
   );
 };
 
-export default React.memo(Nav);
+export default Nav;
