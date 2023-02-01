@@ -2,8 +2,9 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setDeleteProductId } from "../../store/cart/deleteProduct";
+import { setDeleteProductState } from "../../store/cart/deleteProduct";
 import { ProductType } from "../../type/products";
 
 const ProductsItem = ({ product }: { product: ProductType }) => {
@@ -21,16 +22,21 @@ const ProductsItem = ({ product }: { product: ProductType }) => {
   const linkPath = `/products/${slug}`;
 
   //mypage 에서 확인할 때.
+  const [deleteLoading, setDeleteLoading] = useState(false);
   const deleteCartHandler = async (e: any) => {
     e.preventDefault();
+    setDeleteLoading(true);
     const clickedProductId = e.target.parentElement.id;
-    dispatch(setDeleteProductId(clickedProductId));
-    await axios.delete("/api/cart", {
+    const result = await axios.delete("/api/cart", {
       data: {
         user,
         productId: clickedProductId,
       },
     });
+    if (result.data === "성공") {
+      dispatch(setDeleteProductState(true));
+    }
+    setDeleteLoading(false);
   };
 
   return (
@@ -47,6 +53,9 @@ const ProductsItem = ({ product }: { product: ProductType }) => {
           </div>
           {pathName === "/mypage" && (
             <>
+              {deleteLoading && (
+                <div className="flex items-center text-white">삭제중..</div>
+              )}
               <button
                 className="bg-gray-500 px-3 rounded"
                 onClick={deleteCartHandler}

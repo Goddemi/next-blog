@@ -1,23 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-export interface DeleteProductId {
-  id: string | undefined;
+export interface DeleteProductState {
+  isSuccess: boolean;
 }
 
-const initialState: DeleteProductId = {
-  id: "",
+const initialState: DeleteProductState = {
+  isSuccess: false,
 };
 
 const deleteProductSlice = createSlice({
-  name: "cart",
+  name: "deleteProduct",
   initialState,
   reducers: {
-    setDeleteProductId: (state, action: PayloadAction<any>) => {
-      state.id = action.payload;
+    setDeleteProductState: (state, action: PayloadAction<boolean>) => {
+      state.isSuccess = action.payload;
     },
   },
 });
 
-export const { setDeleteProductId } = deleteProductSlice.actions;
+export const { setDeleteProductState } = deleteProductSlice.actions;
 
 export default deleteProductSlice.reducer;

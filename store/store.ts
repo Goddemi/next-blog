@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authModalReducer from "./auth/authModal";
 import loginOutReducer from "./auth/loginOut";
-import deleteProductIdReducer from "./cart/deleteProduct";
+import deleteProductStateReducer from "./cart/deleteProduct";
 
 export const store = configureStore({
   reducer: {
     auth: authModalReducer,
     loginOut: loginOutReducer,
-    deleteId: deleteProductIdReducer,
+    deleteProductState: deleteProductStateReducer,
   },
 });
 
