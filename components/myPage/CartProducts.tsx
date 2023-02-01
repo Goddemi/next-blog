@@ -29,9 +29,7 @@ const CartProducts = ({ user }: any) => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      getCartsHandler();
-    }, 500);
+    getCartsHandler();
   }, [deleteState, user]);
 
   if (!newData || !newData[0]) {

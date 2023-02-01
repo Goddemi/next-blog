@@ -49,7 +49,9 @@ const ProductDetailPage = (props: ProductType) => {
       </div>
       <div className="flex justify-center">
         {putCartLoading && (
-          <span className='ml-3 text-green-400"'>장바구니 담는 중...</span>
+          <span className='ml-3 text-green-400"'>
+            장바구니 담는 중... 좀 걸립니다..!
+          </span>
         )}
         {cartRequestResult && (
           <Notification id="cart" result={cartRequestResult} />
