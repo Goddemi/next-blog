@@ -4,7 +4,7 @@ import CartProducts from "../../components/myPage/CartProducts";
 import { auth } from "../../lib/auth/auth";
 import PersonalInfoChange from "../../components/myPage/PersonalInfo";
 
-const Mypage = (props: any) => {
+const Mypage = () => {
   const user = auth.currentUser;
 
   const [recheckPasswordResult, setRecheckPasswordResult] = useState();

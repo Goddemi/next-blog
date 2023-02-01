@@ -2,6 +2,7 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { ProductType } from "../../type/products";
 
 const ProductsItem = ({ product }: { product: ProductType }) => {
@@ -18,15 +19,18 @@ const ProductsItem = ({ product }: { product: ProductType }) => {
   const linkPath = `/products/${slug}`;
 
   //mypage 에서 확인할 때.
-  const deleteCartHandler = (e: any) => {
+  const [deleteLoading, setDeleteLoading] = useState(false);
+  const deleteCartHandler = async (e: any) => {
     e.preventDefault();
+    setDeleteLoading(true);
     const clickedProductId = e.target.parentElement.id;
-    axios.delete("/api/cart", {
+    await axios.delete("/api/cart", {
       data: {
         user,
         productId: clickedProductId,
       },
     });
+    setDeleteLoading(false);
   };
 
   return (
@@ -42,12 +46,17 @@ const ProductsItem = ({ product }: { product: ProductType }) => {
             <time>{formattedDate}</time>
           </div>
           {pathName === "/mypage" && (
-            <button
-              className="bg-gray-500 px-3 rounded"
-              onClick={deleteCartHandler}
-            >
-              삭제
-            </button>
+            <>
+              {deleteLoading && (
+                <div className="flex items-center text-white">삭제중..</div>
+              )}
+              <button
+                className="bg-gray-500 px-3 rounded"
+                onClick={deleteCartHandler}
+              >
+                삭제
+              </button>
+            </>
           )}
         </div>
       </Link>
