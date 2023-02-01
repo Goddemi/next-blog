@@ -58,5 +58,9 @@ export const errorHandler = (result: string | undefined) => {
     return "잘못된 이메일";
   }
 
+  if (result === "auth/missing-email") {
+    return "이메일을 입력해주세요";
+  }
+
   return result;
 };
