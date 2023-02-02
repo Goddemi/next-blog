@@ -8,8 +8,15 @@ import {
 import { loggedOut } from "../../store/auth/loginOut";
 import InputForm from "../auth/formElements/InputForm";
 import { useRouter } from "next/router";
+import { User } from "firebase/auth";
+interface Props {
+  user: User;
+  setRecheckPasswordResult: React.Dispatch<
+    React.SetStateAction<undefined | string>
+  >;
+}
 
-const PersonalInfoChange = ({ user, setRecheckPasswordResult }: any) => {
+const PersonalInfoChange = ({ user, setRecheckPasswordResult }: Props) => {
   const recheckPasswordRef = useRef<HTMLInputElement>(null);
 
   const dispatch = useDispatch();

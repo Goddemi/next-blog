@@ -1,16 +1,17 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 import React, { useEffect } from "react";
+import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutRequest } from "../../lib/auth/auth";
 import { authModalOn } from "../../store/auth/authModal";
 import { loggedIn, loggedOut } from "../../store/auth/loginOut";
+import { RootState } from "../../store/store";
 
 const Nav = () => {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const loginUser = useSelector((state: any) => state.loginOut.uid);
+  const loginUser = useSelector((state: RootState) => state.loginOut.uid);
 
   useEffect(() => {
     const sessionKey = Object.keys(sessionStorage)[0];

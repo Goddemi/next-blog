@@ -23,10 +23,11 @@ const ProductsItem = ({ product }: { product: ProductType }) => {
 
   //mypage 에서 확인할 때.
   const [deleteLoading, setDeleteLoading] = useState(false);
-  const deleteCartHandler = async (e: any) => {
+  const deleteCartHandler = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setDeleteLoading(true);
-    const clickedProductId = e.target.parentElement.id;
+    const target = e.target as HTMLElement;
+    const clickedProductId = target.parentElement?.id;
     const result = await axios.delete("/api/cart", {
       data: {
         user,

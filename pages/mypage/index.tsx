@@ -7,7 +7,9 @@ import PersonalInfoChange from "../../components/myPage/PersonalInfo";
 const Mypage = () => {
   const user = auth.currentUser;
 
-  const [recheckPasswordResult, setRecheckPasswordResult] = useState();
+  const [recheckPasswordResult, setRecheckPasswordResult] = useState<
+    undefined | string
+  >();
 
   return (
     <>

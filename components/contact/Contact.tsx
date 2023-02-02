@@ -3,7 +3,7 @@ import { postContent } from "../../lib/products/postContent";
 import Notification from "../notification/Notification";
 
 const ContactForm = () => {
-  const [contactResult, setContactResult] = useState<any>();
+  const [contactResult, setContactResult] = useState<string | undefined>();
 
   const emailRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLTextAreaElement>(null);
