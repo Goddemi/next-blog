@@ -3,11 +3,11 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import QueryProvider from "../provider/query";
 import MainLayout from "../components/layout/MainLayout";
-import AuthProvider from "../provider/auth";
+import ReduxProvider from "../provider/auth";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <AuthProvider>
+    <ReduxProvider>
       <QueryProvider>
         <MainLayout>
           <Head>
@@ -20,6 +20,6 @@ export default function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </MainLayout>
       </QueryProvider>
-    </AuthProvider>
+    </ReduxProvider>
   );
 }
