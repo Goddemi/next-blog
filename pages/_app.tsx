@@ -3,7 +3,7 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import QueryProvider from "../provider/query";
 import MainLayout from "../components/layout/MainLayout";
-import ReduxProvider from "../provider/auth";
+import ReduxProvider from "../provider/redux";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

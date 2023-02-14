@@ -37,9 +37,9 @@ const CartProducts = ({ user }: any) => {
   }
 
   return (
-    <>
+    <div className="my-5">
       <ProductsGrid products={newData} />
-    </>
+    </div>
   );
 };
 

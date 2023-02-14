@@ -60,7 +60,6 @@ const PersonalInfoChange = ({ user, setRecheckPasswordResult }: Props) => {
 
   return (
     <div className="my-10">
-      {" "}
       <span className="text-lg font-bold">개인정보 </span>
       <form className="flex justify-center items-center my-5">
         <div className="flex items-center p-2 bg-white text-black">

@@ -18,9 +18,7 @@ const Mypage = () => {
           <div>
             <span className="text-lg font-bold">장바구니</span>
             <div className="flex justify-center items-center">
-              <div className="my-5">
-                <CartProducts user={user.uid} />
-              </div>
+              <CartProducts user={user.uid} />
             </div>
           </div>
           <PersonalInfoChange

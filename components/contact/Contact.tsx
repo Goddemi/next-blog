@@ -26,7 +26,7 @@ const ContactForm = () => {
 
     const response = await postContent("/api/contact", reqBody);
 
-    if (typeof response === "string") {
+    if (response === "POST 에러") {
       return <div>{response}</div>;
     }
 
