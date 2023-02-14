@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const getCarts = async (user: any) => {
+export const getCarts = async (user: string) => {
   try {
     const URL = `https://youneedverse-e9492-default-rtdb.asia-southeast1.firebasedatabase.app/cart/${user}.json`;
     const response = await axios(URL);
