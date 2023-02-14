@@ -1,3 +1,5 @@
+import { User } from "firebase/auth";
+
 export interface CartProductType {
   date: string;
   description: string;
@@ -10,4 +12,9 @@ export interface CartProductType {
 }
 export interface CartType {
   [key: string]: CartProductType;
+}
+
+export interface InfoChangeType {
+  user: User;
+  recheckPasswordHandler: () => Promise<any>;
 }

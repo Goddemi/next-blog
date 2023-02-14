@@ -1,15 +1,9 @@
-import React, { useState } from "react";
-import Notification from "../../components/notification/Notification";
-import CartProducts from "../../components/myPage/CartProducts";
 import { auth } from "../../lib/auth/auth";
+import CartProducts from "../../components/myPage/CartProducts";
 import PersonalInfoChange from "../../components/myPage/PersonalInfo";
 
 const Mypage = () => {
   const user = auth.currentUser;
-
-  const [recheckPasswordResult, setRecheckPasswordResult] = useState<
-    undefined | string
-  >();
 
   return (
     <>
@@ -21,13 +15,7 @@ const Mypage = () => {
               <CartProducts user={user.uid} />
             </div>
           </div>
-          <PersonalInfoChange
-            user={user}
-            setRecheckPasswordResult={setRecheckPasswordResult}
-          />
-          {recheckPasswordResult && (
-            <Notification id="recheckPassword" result={recheckPasswordResult} />
-          )}
+          <PersonalInfoChange user={user} />
         </div>
       ) : (
         <div className="flex justify-center items-center mt-10">

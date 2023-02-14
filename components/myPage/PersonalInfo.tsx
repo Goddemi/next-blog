@@ -1,61 +1,26 @@
-import { useRef } from "react";
-import { useDispatch } from "react-redux";
-import {
-  findPasswordRequest,
-  passwordRecheckRequest,
-  withdrawal,
-} from "../../lib/auth/auth";
-import { loggedOut } from "../../store/auth/loginOut";
+import React, { useRef, useState } from "react";
+import { passwordRecheckRequest } from "../../lib/auth/auth";
 import InputForm from "../auth/formElements/InputForm";
-import { useRouter } from "next/router";
+import ChangePassword from "./personalInfoElement/ChangePassword";
+import DeleteButton from "./personalInfoElement/DeleteButton";
+import Notification from "../notification/Notification";
 import { User } from "firebase/auth";
 interface Props {
   user: User;
-  setRecheckPasswordResult: React.Dispatch<
-    React.SetStateAction<undefined | string>
-  >;
 }
 
-const PersonalInfoChange = ({ user, setRecheckPasswordResult }: Props) => {
+const PersonalInfoChange = ({ user }: Props) => {
   const recheckPasswordRef = useRef<HTMLInputElement>(null);
 
-  const dispatch = useDispatch();
-  const router = useRouter();
+  const [recheckPasswordResult, setRecheckPasswordResult] = useState<
+    undefined | string
+  >();
 
   const recheckPasswordHandler = async () => {
     const recheckPassword = recheckPasswordRef.current?.value;
     const response = await passwordRecheckRequest(user, recheckPassword);
-
     setRecheckPasswordResult(response);
-
     return response;
-  };
-
-  const userDeleteHandler = async (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    e.preventDefault();
-
-    if (confirm("정말 삭제하시겠습니까?") === true) {
-      const response = await recheckPasswordHandler();
-
-      if (response === "성공") {
-        withdrawal(user);
-        dispatch(loggedOut());
-        router.push("/");
-      }
-    }
-  };
-
-  const passwordChangeHandler = async (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    e.preventDefault();
-    const response = await recheckPasswordHandler();
-
-    if (response === "성공") {
-      findPasswordRequest(user);
-    }
   };
 
   return (
@@ -69,21 +34,20 @@ const PersonalInfoChange = ({ user, setRecheckPasswordResult }: Props) => {
             ref={recheckPasswordRef}
           />
         </div>
-
-        <button
-          className="ml-5 p-2.5  bg-orange-500"
-          onClick={passwordChangeHandler}
-        >
-          비밀번호 변경 <br />
-          <span className="text-sm">(이메일로 변경 링크 전송)</span>
-        </button>
-
-        <button className="ml-5 p-5 bg-cyan-500" onClick={userDeleteHandler}>
-          회원탈퇴
-        </button>
+        <ChangePassword
+          user={user}
+          recheckPasswordHandler={recheckPasswordHandler}
+        />
+        <DeleteButton
+          user={user}
+          recheckPasswordHandler={recheckPasswordHandler}
+        />
       </form>
+      {recheckPasswordResult && (
+        <Notification id="recheckPassword" result={recheckPasswordResult} />
+      )}
     </div>
   );
 };
 
-export default PersonalInfoChange;
+export default React.memo(PersonalInfoChange);
