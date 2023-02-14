@@ -34,5 +34,6 @@ yarn dev
 
 ### review
 
-[blogLink(https://goddemi.tistory.com/119)](https://goddemi.tistory.com/119)
-[deplyLink(https://next-blog-3ffp.vercel.app/)](https://next-blog-3ffp.vercel.app/)
+- [blogLink(https://goddemi.tistory.com/119)](https://goddemi.tistory.com/119)
+- [deplyLink(https://next-blog-3ffp.vercel.app/)](https://next-blog-3ffp.vercel.app/)
+
