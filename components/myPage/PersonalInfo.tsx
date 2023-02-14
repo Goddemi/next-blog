@@ -50,4 +50,4 @@ const PersonalInfoChange = ({ user }: Props) => {
   );
 };
 
-export default React.memo(PersonalInfoChange);
+export default PersonalInfoChange;
